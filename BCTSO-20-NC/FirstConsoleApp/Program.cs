@@ -120,6 +120,90 @@
             #endregion
 
 
+            #region ლექცია 3
+
+
+            //try
+            //{
+            //Console.Write("[+ - * /]");
+            //char operation = char.Parse(Console.ReadLine());
+
+
+            //Console.Write("FIRST NUMBER: ");
+            //int.TryParse(Console.ReadLine(),out int result);
+
+
+            //Console.WriteLine(result);
+
+            //Console.Write("SECOND NUMBER: ");
+            //int secondNUmber = int.Parse(Console.ReadLine());
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine(ex.Message);
+            //}
+
+
+
+
+            //int i = 0;
+            //while (i < 10)
+            //{
+            //    Console.WriteLine("Nika");
+            //    i++;
+            //}
+
+
+            //for (int i = 0; i < 10; i++)
+            //{
+            //    Console.WriteLine("Nika");
+            //}
+
+
+            //foreach (var item in collection)
+            //{
+            //}
+
+
+            //do 
+            //{
+            //    Console.WriteLine("Nika");
+            //} while (true);
+
+
+            //for(int i = 10; i >= 1; i--)
+            //{
+            //    Console.WriteLine(i);
+            //}
+
+
+            //for (int i = 0; i < 10; i++)
+            //{
+            //    for (int j = 0; j < 10; j++)
+            //    {
+            //        Console.WriteLine($"i: {i}   j: {j}");
+            //    }
+            //}
+
+
+
+            //double max = int.Parse(Console.ReadLine() );
+            //double result = default;
+            //double avg = default;
+
+            //for (int i = 0; i < max; i++)
+            //{
+            //    result += i;
+            //}
+
+            //avg = result/ max;
+
+            //Console.WriteLine(avg);
+
+            #endregion
+
+
+
         }
     }
 }
