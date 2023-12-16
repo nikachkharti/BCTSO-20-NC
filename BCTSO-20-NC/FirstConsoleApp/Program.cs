@@ -203,6 +203,108 @@
             #endregion
 
 
+            #region ლექცია 4
+
+
+            //მასივის გამოცხადება
+            //string[] students = new string[3];
+
+            //მასივის ინდექსაცია ყოველთვის იწყება 0 - დან
+            //მასივზე მნიშვნლეობის მინიჭება 
+            //students[0] = valeri;
+            //students[1] = tintaini;
+            //students[2] = "Tamar";
+
+            //Console.WriteLine(students[0]);
+            //Console.WriteLine(students[1]);
+            //Console.WriteLine(students[2]);
+
+
+            //string[] students = { "Valeri", "Tamari", "Tinatini" };
+
+            //for (int i = 0; i < students.Length; i++)
+            //{
+            //    Console.WriteLine(students[i]);
+            //}
+
+
+            //მომხმარებელს შევავსებინოთ მასივი ხელით.
+
+            //int[] intArray = new int[4];
+
+            //for (int i = 0; i < intArray.Length; i++)
+            //{
+            //    Console.WriteLine("ENTER THE NUMBER");
+            //    intArray[i] = int.Parse(Console.ReadLine());
+            //}
+
+            //Console.WriteLine("---------------------------------------------");
+
+            //foreach (var item in intArray)
+            //{
+            //    Console.WriteLine(item);
+            //}
+
+
+
+            //მასივის შევსება შემთხვევითი რიცხვებით
+            //Random random = new Random();
+
+            //int[] intArray = new int[4];
+            //for (int i = 0; i < intArray.Length; i++)
+            //{
+            //    intArray[i] = random.Next(-100, -5);
+            //}
+
+            //Console.WriteLine("---------------------------------------------");
+
+            //foreach (var item in intArray)
+            //{
+            //    Console.WriteLine(item);
+            //}
+
+
+
+            //JAGGEDARRAY
+            //int[] stantardArray = new int[3];
+
+
+            //int[][] jaggedArray = new int[3][];
+
+            //jaggedArray[0] = new int[1] { 151 };
+            //jaggedArray[1] = new int[5] { 10, 11, 2, 4, 51 };
+            //jaggedArray[2] = new int[2] { 1157, 7 };
+
+
+            //for (int i = 0; i < jaggedArray.Length; i++)
+            //{
+            //    for (int j = 0; j < jaggedArray[i].Length; j++)
+            //    {
+            //        Console.WriteLine(jaggedArray[i][j]);
+            //    }
+            //}
+
+
+
+            //DIMENSIONSARRAY
+            //int[,] matrix = new int[2, 3];
+
+            //matrix[0, 0] = 100;
+            //matrix[0, 1] = 1200;
+            //matrix[0, 2] = 600;
+
+            //matrix[1, 0] = 10000;
+            //matrix[1, 1] = 2;
+            //matrix[1, 2] = 20;
+
+
+
+
+
+
+
+
+            #endregion
 
         }
     }
