@@ -1,4 +1,9 @@
-﻿namespace FirstConsoleApp
+﻿using System.Globalization;
+using System.Numerics;
+using System.Runtime.CompilerServices;
+using System.Text;
+
+namespace FirstConsoleApp
 {
     internal class Program
     {
@@ -305,6 +310,191 @@
 
 
             #endregion
+
+
+            #region ლექცია 5
+
+
+            //int[] collection = { 10, 103, 11, 2, 4, 3 };
+            //int sum = 0;
+
+            //for (int i = 0; i < collection.Length; i++)
+            //{
+            //    if (collection[i] % 2 == 0)
+            //    {
+            //        sum += collection[i];
+            //    }
+            //}
+
+            //Console.WriteLine(sum);
+
+
+
+
+            //int[] collection = { 10, 103, 11, 2, 4, 3 };
+            //int[] copyCollection = new int[collection.Length];
+
+
+            //for (int i = 0; i < collection.Length; i++)
+            //{
+            //    copyCollection[i] = collection[i];
+            //}
+
+
+            //int[] collection = { 1, 1, 12, 4, 3, 3, 2, 7, 7 };
+
+            //for (int i = 0; i < collection.Length; i++)
+            //{
+            //    bool isUnique = true;
+
+            //    for (int j = 0; j < collection.Length; j++)
+            //    {
+            //        if (i != j && collection[i] == collection[j])
+            //        {
+            //            isUnique = false;
+            //            break;
+            //        }
+            //    }
+
+            //    if (isUnique)
+            //        Console.WriteLine(collection[i]);
+            //}
+
+
+            //Random random = new Random();
+            //int[] collection = new int[5];
+
+            //for (int i = 0; i < collection.Length; i++)
+            //{
+            //    collection[i] = random.Next(101);
+            //}
+            //int maxElement = collection[0];
+
+            //for (int i = 0; i < collection.Length; i++)
+            //{
+            //    if (collection[i] > maxElement)
+            //    {
+            //        maxElement = collection[i];
+            //    }
+            //}
+
+            //Console.WriteLine(maxElement);
+
+
+
+            //Random random = new Random();
+            //int[] collection = new int[5];
+
+            //for (int i = 0; i < collection.Length; i++)
+            //{
+            //    collection[i] = random.Next(101);
+            //}
+            //int maxElement = collection[0];
+            //int maxIndex = 0;
+
+            //for (int i = 0; i < collection.Length; i++)
+            //{
+            //    if (collection[i] > maxElement)
+            //    {
+            //        maxIndex = i;
+            //    }
+            //}
+
+            //Console.WriteLine(maxIndex);
+
+
+
+            //int[] collection = { 10, 7, 2, 4, 1 };
+
+            //for (int i = 0; i < collection.Length - 1; i++)
+            //{
+            //    for (int j = i + 1; j < collection.Length; j++)
+            //    {
+            //        if (collection[j] < collection[i])
+            //        {
+            //            int t = collection[j];
+            //            collection[j] = collection[i];
+            //            collection[i] = t;
+            //        }
+            //    }
+            //}
+
+            //foreach (var item in collection)
+            //{
+            //    Console.WriteLine(item);
+            //}
+
+
+
+            //Compare:
+            //CompareOrdinal:
+            //Concat:
+            //CopyTo:
+            //EndsWith:
+            //IndexOf:
+            //Insert:
+            //Join:
+            //LastIndexOf:
+            //Replace:
+            //Substring:
+            //ToLower:
+            //ToUpper:
+            //Trim:
+
+            //Split:
+
+
+            //CASE CULTURE
+
+            //string text = "Hello!World my name is nika";
+            //string text2 = "World";
+
+
+            //Console.WriteLine(string.Compare(text, 0, text2, 2, text.Length));  // -1 0 1
+            //Console.WriteLine(text.CompareTo(text2));
+            //Console.WriteLine(string.CompareOrdinal(text, 0, text2, 2, text.Length));  // -1 0 1
+
+            //Console.WriteLine(text + text2);
+            //Console.WriteLine($"{text} {text2}");
+            //Console.WriteLine("{0} {1}", text, text2);
+            //Console.WriteLine(string.Concat(text, " ", text2));
+
+            //StringBuilder builder = new StringBuilder(text);
+
+            //char[] coptCharText = new char[text.Length];
+            //text.CopyTo(0, coptCharText, 0, 3);
+
+
+            //Console.WriteLine(text.EndsWith("O", StringComparison.OrdinalIgnoreCase));
+            //Console.WriteLine(text.StartsWith("hel", StringComparison.OrdinalIgnoreCase));
+            //Console.WriteLine(text.Contains("x", StringComparison.OrdinalIgnoreCase));
+
+            //Console.WriteLine(text.Contains("EL".ToLower()));
+            //Console.WriteLine(text.Contains("EL".ToUpper()));
+
+
+            //Console.WriteLine(text.IndexOf('h'));
+            //Console.WriteLine(text.LastIndexOf('h'));
+
+            //string parsedResult = 12.ToString();
+
+            //Console.WriteLine(text.Insert(1,"Z"));
+
+            //Console.WriteLine(string.Join(',', text, text2));
+
+            //Console.WriteLine(text.Replace("h", "z", StringComparison.OrdinalIgnoreCase));
+
+            //Console.WriteLine(text.Substring(1,3));
+
+            //Console.WriteLine(text.Trim());
+            //Console.WriteLine(text.TrimStart());
+            //Console.WriteLine(text.TrimEnd());
+
+            //string[] splitedResult = text.Split();
+
+
+            #endregion
+
 
         }
     }
