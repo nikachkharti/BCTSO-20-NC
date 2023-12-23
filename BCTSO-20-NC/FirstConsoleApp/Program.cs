@@ -2,14 +2,17 @@
 using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace FirstConsoleApp
 {
     internal class Program
     {
+
+
         static void Main()
         {
-            #region ლექცია 2
+            #region ლექცია 2 მონაცემთა ტიპები
 
 
             //IMPLICT CAST - არაცხადი ტიპიზაცია
@@ -125,7 +128,7 @@ namespace FirstConsoleApp
             #endregion
 
 
-            #region ლექცია 3
+            #region ლექცია 3 ციკლი
 
 
             //try
@@ -208,7 +211,7 @@ namespace FirstConsoleApp
             #endregion
 
 
-            #region ლექცია 4
+            #region ლექცია 4 მასივი
 
 
             //მასივის გამოცხადება
@@ -312,7 +315,7 @@ namespace FirstConsoleApp
             #endregion
 
 
-            #region ლექცია 5
+            #region ლექცია 5 string
 
 
             //int[] collection = { 10, 103, 11, 2, 4, 3 };
@@ -496,6 +499,110 @@ namespace FirstConsoleApp
             #endregion
 
 
+
+            #region ლექცია 6 ფუნქციები,მეთოდები, FIle კლასი
+
+
+            //void -- სიცარიელე
+
+            //Console.WriteLine("nika");
+
+            //string result = Console.ReadLine();
+
+            //Console.WriteLine(result);
+
+
+            //int result = IncreaseAge(15);
+
+
+            //absolute path
+            //relative path
+
+            //Console.WriteLine("Nika");
+            //File.AppendAllText("C:\\Users\\User\\Desktop\\test.txt", "Hello World2!\n");
+            //File.AppendAllText(@"../../../test.txt", "Hello World2!\n");
+
+
+
+            //string text = "hello world.my name is nika.";
+            //string[] sentences = text.Split('.');
+            //for (int i = 0; i < sentences.Length; i++)
+            //{
+            //    sentences[i] = sentences[i].Trim();
+            //    if (sentences[i].Length > 0)
+            //    {
+            //        sentences[i] = sentences[i].Substring(0, 1).ToUpper() + sentences[i].Substring(1);
+            //    }
+            //}
+            //text = string.Join(".", sentences);
+
+            //Console.WriteLine(text);
+
+            try
+            {
+                string name = GetName();
+                char type = GetDisplayType();
+
+                switch (type)
+                {
+                    case 'C':
+                        DisplayInfoInConsole(name);
+                        break;
+                    case 'F':
+                        DisplayInfoInFile("../../../test.txt", name);
+                        break;
+                    default:
+                        Console.WriteLine("INVALID PARAMETERS");
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+
+            #endregion
         }
+
+        static void DisplayInfoInFile(string path, string name)
+        {
+            File.WriteAllText(path, name);
+        }
+
+        static void DisplayInfoInConsole(string name)
+        {
+            Console.WriteLine(name);
+        }
+
+        static string GetName()
+        {
+            Console.Write("ENTER YOUR NAME: ");
+            string fullName = Console.ReadLine();
+
+            return fullName;
+        }
+
+        static char GetDisplayType()
+        {
+            Console.Write("[F] to wirte text in file [C] to write text in conosle ");
+            char.TryParse(Console.ReadLine(), out char displayInfoType);
+
+            return displayInfoType;
+        }
+
+
+
+
+        static int IncreaseAge(int age)
+        {
+            return age += 5;
+        }
+
+        static void DisplayName(string nameOfPerson)
+        {
+            Console.WriteLine(nameOfPerson);
+        }
+
     }
 }
