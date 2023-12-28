@@ -1,15 +1,7 @@
-﻿using System.Globalization;
-using System.Numerics;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Text.RegularExpressions;
-
-namespace FirstConsoleApp
+﻿namespace FirstConsoleApp
 {
     internal class Program
     {
-
-
         static void Main()
         {
             #region ლექცია 2 მონაცემთა ტიპები
@@ -126,8 +118,6 @@ namespace FirstConsoleApp
             //Console.WriteLine("{0}{1}{2}{3}",firstNumber,secondNumber,thirdNumber,fourthNumber);
 
             #endregion
-
-
             #region ლექცია 3 ციკლი
 
 
@@ -209,8 +199,6 @@ namespace FirstConsoleApp
             //Console.WriteLine(avg);
 
             #endregion
-
-
             #region ლექცია 4 მასივი
 
 
@@ -313,8 +301,6 @@ namespace FirstConsoleApp
 
 
             #endregion
-
-
             #region ლექცია 5 string
 
 
@@ -497,9 +483,6 @@ namespace FirstConsoleApp
 
 
             #endregion
-
-
-
             #region ლექცია 6 ფუნქციები,მეთოდები, FIle კლასი
 
 
@@ -538,43 +521,70 @@ namespace FirstConsoleApp
 
             //Console.WriteLine(text);
 
-            try
-            {
-                string name = GetName();
-                char type = GetDisplayType();
+            //try
+            //{
+            //    string name = GetName();
+            //    char type = GetDisplayType();
 
-                switch (type)
-                {
-                    case 'C':
-                        DisplayInfoInConsole(name);
-                        break;
-                    case 'F':
-                        DisplayInfoInFile("../../../test.txt", name);
-                        break;
-                    default:
-                        Console.WriteLine("INVALID PARAMETERS");
-                        break;
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
+            //    switch (type)
+            //    {
+            //        case 'C':
+            //            DisplayInfoInConsole(name);
+            //            break;
+            //        case 'F':
+            //            DisplayInfoInFile("../../../test.txt", name);
+            //            break;
+            //        default:
+            //            Console.WriteLine("INVALID PARAMETERS");
+            //            break;
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine(ex.Message);
+            //}
 
 
             #endregion
+
+
+            //ობიექტები რთული
+
+            //Person firstPerson = new Person();
+            //firstPerson.firstName = "Sandro";
+            //firstPerson.lastName = "Khamaladze";
+            //firstPerson.age = 20;
+
+            //Console.WriteLine($"{firstPerson.firstName} {firstPerson.lastName} {firstPerson.age}");
+
+
+            //Person secondPerson = new Person
+            //{
+            //    firstName = "Zurab",
+            //    lastName = "Darsadze",
+            //    age = 25
+            //};
+
+
+            //Console.WriteLine($"{secondPerson.firstName} {secondPerson.lastName} {secondPerson.age}");
+
+
+            //Person thirdPerson = new Person();
+            //thirdPerson.FirstName = "Nika";
+            //thirdPerson.LastName = "Chkahrtishvili";
+            //thirdPerson.Age = 10;
+
+            //Console.WriteLine($"{thirdPerson.FirstName} {thirdPerson.LastName} {thirdPerson.Age}");
         }
 
         static void DisplayInfoInFile(string path, string name)
         {
             File.WriteAllText(path, name);
         }
-
         static void DisplayInfoInConsole(string name)
         {
             Console.WriteLine(name);
         }
-
         static string GetName()
         {
             Console.Write("ENTER YOUR NAME: ");
@@ -582,7 +592,6 @@ namespace FirstConsoleApp
 
             return fullName;
         }
-
         static char GetDisplayType()
         {
             Console.Write("[F] to wirte text in file [C] to write text in conosle ");
@@ -590,15 +599,10 @@ namespace FirstConsoleApp
 
             return displayInfoType;
         }
-
-
-
-
         static int IncreaseAge(int age)
         {
             return age += 5;
         }
-
         static void DisplayName(string nameOfPerson)
         {
             Console.WriteLine(nameOfPerson);
