@@ -1,4 +1,8 @@
-﻿Console.WriteLine();
+﻿using Homeworks;
+using Homeworks.MyExceptions;
+using System.Collections;
+
+Console.WriteLine();
 #region 1 ლექცია
 
 #region საკლასო დავალებები
@@ -1183,6 +1187,103 @@ for (int i = 0; i < collection.Length - 1; i++)
 //{
 //    return text == null || text.Length == 0 || All(text, ' ');
 //}
+
+
+
+#endregion
+
+
+
+#region  6 ლექცია
+#region საშინაო დავალებები
+
+
+//•	დავალება 1: შექმენით კლასი რიმლითაც აღწერთ საკუთარ თავს. კლასს უნდა ჰქოონდეს შემდეგი ინფორმაცია თქვენი სახელი, გვარი, ასაკი, პირადი ნომერი, ტელეფონის ნომერი, ელ-ფოსტა.
+//კლასი ინფორმაციას უნდა იღებდეს კონსტრუქტორიდან.მოახდინეთ თქვენი კლასის დემონსტრირება კონსოლში.
+
+//Person myslef = new(firstName: "Nika", lastName: "Chkhartishviil", age: 28, pin: "01024087456", phoneNumber: "55533211", email: "nika@gmail.com");
+//Console.WriteLine(myslef);
+
+
+
+
+//•	დავალება 2: დაწერეთ ანგარიშს კლასი, რომელსაც ექნება
+//•	ანგარიშის ნომერი (22 ნიშნა)
+//•	ვალუტა(სამნიშნა)
+//•	ბალანსი(არ უნდა იყოს უარყოფითი)
+
+//•	დაწერეთ კლიენტის კლასი, რომელსაც ექნება
+//•	სახელი
+//•	გვარი
+//•	პირადი ნომერი (11 ნიშნა)
+//•	ანგარიში
+
+//მოახდინეთ თქვენს მიერ შექმნილი კლასების დემონსტრირება კონსოლში ობიექტების სახით. ობიექტებს უნდა შეეძლოთ თანხის განაღდება ბალანსის შევსება, ერთმანეთისთვის თნხის გადარიცხვა.
+
+//try
+//{
+//    Account account1 = new()
+//    {
+//        AccountNumber = "1234567894512345678945",
+//        Balance = 1000,
+//        Currency = "GEL"
+//    };
+
+
+//    Client client1 = new()
+//    {
+//        FirstName = "Nika",
+//        LastName = "Chkhartishviil",
+//        Age = 28,
+//        Pin = "01024087456",
+//        PhoneNumber = "55533211",
+//        Email = "nika@gmail.com",
+//        Account = account1
+//    };
+
+
+//    Client client2 = new()
+//    {
+//        FirstName = "Otar",
+//        LastName = "Tagviasvhili",
+//        Age = 28,
+//        Pin = "01024087456",
+//        PhoneNumber = "55533211",
+//        Email = "otar@gmail.com",
+//        Account = new Account()
+//        {
+//            AccountNumber = "2234567894512345678945",
+//            Balance = 10000000,
+//            Currency = "GEL"
+//        }
+//    };
+
+//    Console.WriteLine($"CLIENT 1 {client1}");
+//    Console.WriteLine($"CLIENT 2 {client2}");
+
+
+//    client1.Account.Transfer(client2, 10000);
+//    Console.WriteLine("--------------------------------");
+
+//    Console.WriteLine($"CLIENT 1 {client1}");
+//    Console.WriteLine($"CLIENT 2 {client2}");
+
+
+//    client2.Account.Withdraw(500);
+//    Console.WriteLine($"CLIENT 2 {client2}");
+//}
+//catch (Exception ex)
+//{
+//    Console.WriteLine(ex.Message);
+//}
+
+
+
+
+#endregion
+
+
+
 
 
 

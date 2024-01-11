@@ -575,6 +575,7 @@
             //thirdPerson.Age = 10;
 
             //Console.WriteLine($"{thirdPerson.FirstName} {thirdPerson.LastName} {thirdPerson.Age}");
+
         }
 
         static void DisplayInfoInFile(string path, string name)

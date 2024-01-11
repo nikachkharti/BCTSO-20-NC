@@ -1,7 +1,7 @@
 ﻿namespace FirstConsoleApp
 {
     //კლასის გამოცხადება კლასი ცხადდება იმისთვის რომ აღიწეროს როგორი იქნება ობიექტი
-    class Person
+    public class Person
     {
         //AUTO PROPERTY
         public string FirstName { get; set; }
@@ -38,5 +38,11 @@
         //{
         //    Console.WriteLine($"{firstName} {lastName} {age}");
         //}
+
+
+        protected virtual void Test()
+        {
+            Console.WriteLine("HELLO WORLD");
+        }
     }
 }
