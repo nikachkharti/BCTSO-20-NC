@@ -546,8 +546,7 @@
 
 
             #endregion
-
-
+            #region ლექცია 7 კლასები ობიექტები
             //ობიექტები რთული
 
             //Person firstPerson = new Person();
@@ -575,7 +574,16 @@
             //thirdPerson.Age = 10;
 
             //Console.WriteLine($"{thirdPerson.FirstName} {thirdPerson.LastName} {thirdPerson.Age}");
+            #endregion
 
+            #region ლექცია 9 აბსტრაქტული კლასები, ინტერფეისები
+
+
+
+
+
+
+            #endregion
         }
 
         static void DisplayInfoInFile(string path, string name)
