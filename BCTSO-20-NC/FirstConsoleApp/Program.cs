@@ -1,5 +1,55 @@
 ﻿namespace FirstConsoleApp
 {
+    abstract class PersonNew
+    {
+        public string Name { get; set; }
+
+        public abstract void Talk();
+    }
+
+    abstract class Employee : PersonNew
+    {
+        public double Salary { get; set; }
+    }
+
+    class Subject
+    {
+        public string Name { get; set; }
+    }
+
+    class Teacher : Employee
+    {
+        public Subject Subject { get; set; }
+
+        public override void Talk()
+        {
+            Console.WriteLine($"Hello  I am Teacher {Name} I have Subject {Subject.Name} Salary {Salary} GEL");
+        }
+    }
+
+    class Student : PersonNew
+    {
+        public double GPA { get; set; }
+        public Subject Subject { get; set; }
+
+        public override void Talk()
+        {
+            Console.WriteLine($"Hello  I am Student {Name} I have Subject {Subject.Name} GPA {GPA}");
+        }
+
+    }
+
+    class Administration : Employee
+    {
+        public string SecretPassword { get; set; }
+
+        public override void Talk()
+        {
+            Console.WriteLine($"Hello  I am Teacher {Name} I have a secret {SecretPassword} Salary {Salary} GEL");
+        }
+    }
+
+
     internal class Program
     {
         static void Main()
@@ -578,12 +628,63 @@
 
             #region ლექცია 9 აბსტრაქტული კლასები, ინტერფეისები
 
+            Subject Csharp = new()
+            {
+                Name = "C#"
+            };
 
 
+            //PersonNew personObj = new PersonNew()
+            //{
+            //    Name = "Luka Gvazava"
+            //};
+
+            //Employee employeeObj = new Employee()
+            //{
+            //    Name = "Sandro Khmaladze",
+            //    Salary = 1000
+            //};
 
 
+            Teacher teacherObj = new Teacher()
+            {
+                Name = "Natalia Giorgobiani",
+                Salary = 1000,
+                Subject = Csharp
+            };
+
+            teacherObj.Talk();
+            HelloToPeople(teacherObj);
+
+
+            Student studentObj = new Student()
+            {
+                Name = "Nika Chkharithsivli",
+                GPA = 2.0,
+                Subject = Csharp
+            };
+
+            studentObj.Talk();
+            HelloToPeople(studentObj);
+
+
+            Administration administrationObj = new Administration()
+            {
+                Name = "Otar Tagviashvili",
+                Salary = 1000000,
+                SecretPassword = "1234"
+            };
+
+            administrationObj.Talk();
+            HelloToPeople(administrationObj);
 
             #endregion
+        }
+
+
+        static void HelloToPeople(PersonNew person)
+        {
+            Console.WriteLine($"Welcome {person.Name}");
         }
 
         static void DisplayInfoInFile(string path, string name)
