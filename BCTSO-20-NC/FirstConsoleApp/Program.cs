@@ -48,12 +48,70 @@
             Console.WriteLine($"Hello  I am Teacher {Name} I have a secret {SecretPassword} Salary {Salary} GEL");
         }
     }
+    class Animal : IAnimal
+    {
+        public string Name { get; set; }
+        public void Walk()
+        {
+            Console.WriteLine("WALKING...");
+        }
+    }
+    interface IAnimal
+    {
+        public string Name { get; set; }
+        public void Walk();
+    }
+
+
+
+    abstract class Bird
+    {
+        public abstract void Eat();
+    }
+
+    interface IFlyer
+    {
+        void Fly(string test);
+    }
+
+
+    interface IFlyerNew
+    {
+        void Fly();
+    }
+
+    class Eagle : Bird, IFlyer, IFlyerNew
+    {
+        public override void Eat()
+        {
+            Console.WriteLine("EATING MEAT");
+        }
+
+        public void Fly(string test)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Fly()
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    class Penguin : Bird
+    {
+        public override void Eat()
+        {
+            Console.WriteLine("EATING FISH");
+        }
+    }
 
 
     internal class Program
     {
         static void Main()
         {
+
             #region ლექცია 2 მონაცემთა ტიპები
 
 
@@ -625,13 +683,13 @@
 
             //Console.WriteLine($"{thirdPerson.FirstName} {thirdPerson.LastName} {thirdPerson.Age}");
             #endregion
-
             #region ლექცია 9 აბსტრაქტული კლასები, ინტერფეისები
 
-            Subject Csharp = new()
-            {
-                Name = "C#"
-            };
+
+            //Subject Csharp = new()
+            //{
+            //    Name = "C#"
+            //};
 
 
             //PersonNew personObj = new PersonNew()
@@ -646,37 +704,36 @@
             //};
 
 
-            Teacher teacherObj = new Teacher()
-            {
-                Name = "Natalia Giorgobiani",
-                Salary = 1000,
-                Subject = Csharp
-            };
+            //Teacher teacherObj = new Teacher()
+            //{
+            //    Name = "Natalia Giorgobiani",
+            //    Salary = 1000,
+            //    Subject = Csharp
+            //};
 
-            teacherObj.Talk();
-            HelloToPeople(teacherObj);
+            //teacherObj.Talk();
+            //HelloToPeople(teacherObj);
+
+            //Student studentObj = new Student()
+            //{
+            //    Name = "Nika Chkharithsivli",
+            //    GPA = 2.0,
+            //    Subject = Csharp
+            //};
+
+            //studentObj.Talk();
+            //HelloToPeople(studentObj);
 
 
-            Student studentObj = new Student()
-            {
-                Name = "Nika Chkharithsivli",
-                GPA = 2.0,
-                Subject = Csharp
-            };
+            //Administration administrationObj = new Administration()
+            //{
+            //    Name = "Otar Tagviashvili",
+            //    Salary = 1000000,
+            //    SecretPassword = "1234"
+            //};
 
-            studentObj.Talk();
-            HelloToPeople(studentObj);
-
-
-            Administration administrationObj = new Administration()
-            {
-                Name = "Otar Tagviashvili",
-                Salary = 1000000,
-                SecretPassword = "1234"
-            };
-
-            administrationObj.Talk();
-            HelloToPeople(administrationObj);
+            //administrationObj.Talk();
+            //HelloToPeople(administrationObj);
 
             #endregion
         }
@@ -686,7 +743,6 @@
         {
             Console.WriteLine($"Welcome {person.Name}");
         }
-
         static void DisplayInfoInFile(string path, string name)
         {
             File.WriteAllText(path, name);
