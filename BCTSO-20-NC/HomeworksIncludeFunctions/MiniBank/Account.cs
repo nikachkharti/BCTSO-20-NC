@@ -1,7 +1,7 @@
 ﻿using Homeworks.MyExceptions;
 using System.Runtime.CompilerServices;
 
-namespace Homeworks
+namespace Homeworks.MiniBank
 {
     public class Account
     {

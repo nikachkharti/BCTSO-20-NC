@@ -1,4 +1,4 @@
-﻿namespace Homeworks
+﻿namespace Homeworks.MiniBank
 {
     public class Client : Person // მემკვიდრეობა
     {

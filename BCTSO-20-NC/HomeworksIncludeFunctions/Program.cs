@@ -1,4 +1,6 @@
 ﻿using Homeworks;
+using Homeworks.MiniBank;
+using Homeworks.MiniBank.Logger;
 using Homeworks.MyExceptions;
 using System.Collections;
 
@@ -1220,67 +1222,118 @@ for (int i = 0; i < collection.Length - 1; i++)
 
 //მოახდინეთ თქვენს მიერ შექმნილი კლასების დემონსტრირება კონსოლში ობიექტების სახით. ობიექტებს უნდა შეეძლოთ თანხის განაღდება ბალანსის შევსება, ერთმანეთისთვის თნხის გადარიცხვა.
 
-//try
-//{
-//    Account account1 = new()
-//    {
-//        AccountNumber = "1234567894512345678945",
-//        Balance = 1000,
-//        Currency = "GEL"
-//    };
+try
+{
+    Account account1 = new()
+    {
+        AccountNumber = "1234567894512345678945",
+        Balance = 1000,
+        Currency = "GEL"
+    };
 
 
-//    Client client1 = new()
-//    {
-//        FirstName = "Nika",
-//        LastName = "Chkhartishviil",
-//        Age = 28,
-//        Pin = "01024087456",
-//        PhoneNumber = "55533211",
-//        Email = "nika@gmail.com",
-//        Account = account1
-//    };
+    Client client1 = new()
+    {
+        FirstName = "Nika",
+        LastName = "Chkhartishviil",
+        Age = 28,
+        Pin = "01024087456",
+        PhoneNumber = "55533211",
+        Email = "nika@gmail.com",
+        Account = account1
+    };
 
 
-//    Client client2 = new()
-//    {
-//        FirstName = "Otar",
-//        LastName = "Tagviasvhili",
-//        Age = 28,
-//        Pin = "01024087456",
-//        PhoneNumber = "55533211",
-//        Email = "otar@gmail.com",
-//        Account = new Account()
-//        {
-//            AccountNumber = "2234567894512345678945",
-//            Balance = 10000000,
-//            Currency = "GEL"
-//        }
-//    };
+    Client client2 = new()
+    {
+        FirstName = "Otar",
+        LastName = "Tagviasvhili",
+        Age = 28,
+        Pin = "01024087456",
+        PhoneNumber = "55533211",
+        Email = "otar@gmail.com",
+        Account = new Account()
+        {
+            AccountNumber = "2234567894512345678945",
+            Balance = 10000000,
+            Currency = "GEL"
+        }
+    };
 
-//    Console.WriteLine($"CLIENT 1 {client1}");
-//    Console.WriteLine($"CLIENT 2 {client2}");
-
-
-//    client1.Account.Transfer(client2, 10000);
-//    Console.WriteLine("--------------------------------");
-
-//    Console.WriteLine($"CLIENT 1 {client1}");
-//    Console.WriteLine($"CLIENT 2 {client2}");
+    Console.WriteLine($"CLIENT 1 {client1}");
+    Console.WriteLine($"CLIENT 2 {client2}");
 
 
-//    client2.Account.Withdraw(500);
-//    Console.WriteLine($"CLIENT 2 {client2}");
-//}
-//catch (Exception ex)
-//{
-//    Console.WriteLine(ex.Message);
-//}
+
+    client1.Account.Transfer(client2, 100);
+    Console.WriteLine("--------------------------------");
+
+    Console.Write("[F] -- [C]");
+    char logType = char.Parse(Console.ReadLine());
+
+
+    switch (logType)
+    {
+        case 'F':
+            //ILogger fileLogger = new FileLogger();
+            FileLogger.Log($"{client1.FirstName} {client1.LastName} Transfered money to {client2.FirstName} {client2.FirstName}");
+            break;
+        case 'C':
+            ConsoleLogger.Log($"{client1.FirstName} {client1.LastName} Transfered money to {client2.FirstName} {client2.FirstName}");
+            break;
+        default:
+            Console.WriteLine("Incorrect operation");
+            break;
+    }
+
+
+    Console.WriteLine($"CLIENT 1 {client1}");
+    Console.WriteLine($"CLIENT 2 {client2}");
+
+
+    client2.Account.Withdraw(500);
+    Console.WriteLine($"CLIENT 2 {client2}");
+}
+catch (Exception ex)
+{
+    Console.WriteLine(ex.Message);
+}
 
 
 
 
 #endregion
+
+
+
+
+
+
+#endregion
+
+
+
+
+#region ლექცია 9
+
+//1 დავალება
+//წინა გაკვეთლებზე დაწერილ საბანკო აპლიკაციას ჰქონდა გარკვეული ოპერაციების (თანხის განაღდება, გადარიცხვა, შეტანა) ფუნქციონალი რომელიც ავამუშავეთ, მაგრამ კონსოლური ფანჯრის გათიშვის შემდეგ გადარიცხვის შესახებ ისტორია იკარგებოდა.
+//თქვენი დავალებაა ააწყოთ Logger ანუ განხორციელებული ტრანზაქციების შესახებ ინფორმაციის შემნახავი პროგრამა.
+// ინფორმაციის დამახსოვრება შეგვიძლია 2 გზით
+
+//პირვველი: განხორციელებული ტრანზაქციის შესახებ ინფრმაცია დაიბეჭდოს კონსოლში.
+//მეორე: განხორციელებული ტანზაქციის შესახებ ინფორამცია ჩაიწეროს და დამახსოვრედს ფაილში.
+
+//როდესაც მომხმარებელი განახორციელებს რომელიმე ოპერაციას მომხმარებელს კონსოლიდან უნდა მიეცეს არჩევანი განხორციელებული ტრანზაქცია ჩაიწეროს ფაილში, თუ დაიბეჭდოს კონსოლში. Logger - ის ფუნქციონალის ასაწყობად აუცილებლად გამოიყენეთ
+//ინტერფეისი ან აბსტრაქტული კლასი, თქვენი სურვილის მიხედვით.
+
+//თუ მომხმარებელი აირჩევს ფაილს ფაილში უნდა ჩაიწეროს შემდეგი ინფორმაცია, მაგალითად:
+
+//"მომხმარებელმა ნიკა ჩხარტიშვილი გადაურიცხა 500 ლარი მომხმარებელს გიორგი გიორგაძე, გადარიცხვის თარიღი: ----მიმდინარე თარიღი---"
+//"მომხმარებელმა ნიკა ჩხარტიშვილი შეიტანა 500 ლარი გადარიცხვის თარიღი: ---მიმდინარე თარიღი---"
+//და ა.შ.
+
+
 
 
 
