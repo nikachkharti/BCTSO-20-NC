@@ -1222,82 +1222,82 @@ for (int i = 0; i < collection.Length - 1; i++)
 
 //მოახდინეთ თქვენს მიერ შექმნილი კლასების დემონსტრირება კონსოლში ობიექტების სახით. ობიექტებს უნდა შეეძლოთ თანხის განაღდება ბალანსის შევსება, ერთმანეთისთვის თნხის გადარიცხვა.
 
-try
-{
-    Account account1 = new()
-    {
-        AccountNumber = "1234567894512345678945",
-        Balance = 1000,
-        Currency = "GEL"
-    };
+//try
+//{
+//    Account account1 = new()
+//    {
+//        AccountNumber = "1234567894512345678945",
+//        Balance = 1000,
+//        Currency = "GEL"
+//    };
 
 
-    Client client1 = new()
-    {
-        FirstName = "Nika",
-        LastName = "Chkhartishviil",
-        Age = 28,
-        Pin = "01024087456",
-        PhoneNumber = "55533211",
-        Email = "nika@gmail.com",
-        Account = account1
-    };
+//    Client client1 = new()
+//    {
+//        FirstName = "Nika",
+//        LastName = "Chkhartishviil",
+//        Age = 28,
+//        Pin = "01024087456",
+//        PhoneNumber = "55533211",
+//        Email = "nika@gmail.com",
+//        Account = account1
+//    };
 
 
-    Client client2 = new()
-    {
-        FirstName = "Otar",
-        LastName = "Tagviasvhili",
-        Age = 28,
-        Pin = "01024087456",
-        PhoneNumber = "55533211",
-        Email = "otar@gmail.com",
-        Account = new Account()
-        {
-            AccountNumber = "2234567894512345678945",
-            Balance = 10000000,
-            Currency = "GEL"
-        }
-    };
+//    Client client2 = new()
+//    {
+//        FirstName = "Otar",
+//        LastName = "Tagviasvhili",
+//        Age = 28,
+//        Pin = "01024087456",
+//        PhoneNumber = "55533211",
+//        Email = "otar@gmail.com",
+//        Account = new Account()
+//        {
+//            AccountNumber = "2234567894512345678945",
+//            Balance = 10000000,
+//            Currency = "GEL"
+//        }
+//    };
 
-    Console.WriteLine($"CLIENT 1 {client1}");
-    Console.WriteLine($"CLIENT 2 {client2}");
-
-
-
-    client1.Account.Transfer(client2, 100);
-    Console.WriteLine("--------------------------------");
-
-    Console.Write("[F] -- [C]");
-    char logType = char.Parse(Console.ReadLine());
+//    Console.WriteLine($"CLIENT 1 {client1}");
+//    Console.WriteLine($"CLIENT 2 {client2}");
 
 
-    switch (logType)
-    {
-        case 'F':
-            //ILogger fileLogger = new FileLogger();
-            FileLogger.Log($"{client1.FirstName} {client1.LastName} Transfered money to {client2.FirstName} {client2.FirstName}");
-            break;
-        case 'C':
-            ConsoleLogger.Log($"{client1.FirstName} {client1.LastName} Transfered money to {client2.FirstName} {client2.FirstName}");
-            break;
-        default:
-            Console.WriteLine("Incorrect operation");
-            break;
-    }
+
+//    client1.Account.Transfer(client2, 100);
+//    Console.WriteLine("--------------------------------");
+
+//    Console.Write("[F] -- [C]");
+//    char logType = char.Parse(Console.ReadLine());
 
 
-    Console.WriteLine($"CLIENT 1 {client1}");
-    Console.WriteLine($"CLIENT 2 {client2}");
+//    switch (logType)
+//    {
+//        case 'F':
+//            //ILogger fileLogger = new FileLogger();
+//            FileLogger.Log($"{client1.FirstName} {client1.LastName} Transfered money to {client2.FirstName} {client2.FirstName}");
+//            break;
+//        case 'C':
+//            ConsoleLogger.Log($"{client1.FirstName} {client1.LastName} Transfered money to {client2.FirstName} {client2.FirstName}");
+//            break;
+//        default:
+//            Console.WriteLine("Incorrect operation");
+//            break;
+//    }
 
 
-    client2.Account.Withdraw(500);
-    Console.WriteLine($"CLIENT 2 {client2}");
-}
-catch (Exception ex)
-{
-    Console.WriteLine(ex.Message);
-}
+//    Console.WriteLine($"CLIENT 1 {client1}");
+//    Console.WriteLine($"CLIENT 2 {client2}");
+
+
+//    client2.Account.Withdraw(500);
+//    Console.WriteLine($"CLIENT 2 {client2}");
+//}
+//catch (Exception ex)
+//{
+//    Console.WriteLine(ex.Message);
+//}
 
 
 
@@ -1337,6 +1337,45 @@ catch (Exception ex)
 
 
 
+
+
+
+#endregion
+
+
+
+#region ლექცია 10 ოპერატორების გადატვირთვა
+
+#region საკლასო დავალება
+
+
+//---------------------------------------------------------1 ნაწილი-------------------------------------------- -
+
+//შექმენით კლასი სახელად CustomDate კლასს უნდა ჰქონდეს სამი Property რომელიც გამოხატავს დღეს თვეს და წელს.
+//თქვენი დავალებაა რომ ამ კლასისთვის დაწეროთ მეთოდები სახელად
+
+//AddDays --- ეს ფუნქცია ობიექტის მიმდინარე თარიღის დღეს დაუმატებს იმდენ დღეს რამდენსაც გადავცემთ პარამეტრად.
+//AddMonths --- ეს ფუნქცია ობიექტის მიმდინარე თარიღის თვეს დაუმატებს იმდენ თვეს რამდენსაც გადავცემთ პარამეტრად.
+//AddYears--- ეს ფუნქცია ობიექტის მიმდინარე თარიღის წელს დაუმატებს იმდენ წელს რამდენსაც გადავცემთ პარამეტრად.
+
+
+//---------------------------------------------------------2 ნაწილი---------------------------------------------
+
+//კლასისთვის უნდა გადატვირთოთ  გამოკლების ოპერატორი რომელიც პარამეტრად მიიღებს ორ  CustomDate ობიექტს გაარკვევს რა სხვაობაა მათ შორის დროში და დააბრუნებს ამ სხვაობას ახალი CustomDate ობიექტის სახით.
+//მაგალითად:      2000 - 12 - 22 - 1995 - 11 - 22 = 5 - 1 - 0  ანუ სხვაობა ამ ორ თარიღს შორის არის 5 წელი და 1 თვე.
+
+
+
+//CustomDate date1 = new(year: 2000, month: 12, day: 12);
+//CustomDate date2 = new(year: 1995, month: 11, day: 12);
+
+
+//Console.WriteLine(date1 - date2);
+
+
+
+
+#endregion
 
 
 
