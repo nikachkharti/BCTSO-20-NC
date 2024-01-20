@@ -1,6 +1,9 @@
-﻿namespace SecondConsoleApp
-{
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Security.AccessControl;
 
+namespace SecondConsoleApp
+{
 
     internal class Program
     {
@@ -99,10 +102,21 @@
 
             #endregion
 
+            #region ლექცია 11 List 
+
+            //int[] ar = { 100, 200, 500 };
 
 
+            //List<int> intList = new List<int>();
+            //intList.Add(12);
+            //intList.Add(132);
+            //intList.Add(15);
+            //intList.Add(21);
+            //intList.Add(3);
+            //intList.Add(12);
 
-
+            //intList.InsertRange(2, ar);
+            #endregion
         }
     }
 }
