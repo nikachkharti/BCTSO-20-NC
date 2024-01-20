@@ -18,44 +18,18 @@ namespace Homeworks.MiniBank
             }
         }
 
-        private string currency;
-        public string Currency
-        {
-            get { return currency; }
-            set
-            {
-                if (value.Length == 3)
-                {
-                    currency = value;
-                }
-            }
-        }
-
-
-        private double balance;
-        public double Balance
-        {
-            get { return balance; }
-            set
-            {
-                if (value > 0)
-                {
-                    balance = value;
-                }
-            }
-        }
-
+        public Money Money { get; set; }
 
         public void Fill(double balance)
         {
-            Balance += balance;
+            Money.Amount += balance;
         }
 
         public void Withdraw(double balance)
         {
-            if (Balance >= balance)
+            if (Money.Amount >= balance)
             {
-                Balance -= balance;
+                Money.Amount -= balance;
             }
             else
             {
@@ -65,10 +39,10 @@ namespace Homeworks.MiniBank
 
         public void Transfer(Client client, double transferAmount)
         {
-            if (Balance >= transferAmount)
+            if (Money.Amount >= transferAmount)
             {
-                Balance -= transferAmount;
-                client.Account.Balance += transferAmount;
+                Money.Amount -= transferAmount;
+                client.Account.Money.Amount += transferAmount;
             }
             else
             {
