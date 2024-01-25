@@ -170,8 +170,8 @@ namespace SecondConsoleApp
 
 
 
-            int[] intAr = { 8, 8, 8 };
-            var res = CustomAlgorithms.Sum(intAr);
+            //int[] intAr = { 8, 8, 8 };
+            //var res = CustomAlgorithms.Sum(intAr);
 
 
 
