@@ -117,6 +117,40 @@ namespace SecondConsoleApp
 
             //intList.InsertRange(2, ar);
             #endregion
+
+
+            #region ლექცია 12 მონაცემთა სტრუქტურები
+
+            List<string> names = new()
+            {
+                "Nika",
+                "Giorgi",
+                "Daviti",
+                "Mariami"
+            };
+
+
+
+            //LINKEDLIST
+            //LinkedList<string> people = new LinkedList<string>(names);
+
+
+            //QUEUE
+            //Queue<string> people = new Queue<string>(names);
+            //people.Enqueue("Jemali");
+
+            //people.Dequeue();
+
+
+
+            //შექმენით ექიმის კლასი რომელსაც ექნება მხოლოდ სახელი
+            //შექმენით პაციენტის კლასი რომელსაც ექნება სახელი
+            //ააწყვეთ პაციენტების რიგის ლოგიკა ყოველ ჯერზე როცა ექიმი დაასრულებს
+            //პაციენტს გამოკვლევას მოხდეს პაციენტის გადამისამართება ისტორიის List ში
+            //და ექიმთან ვიზიტზე შევიდეს ახალი პაციენტი.
+
+
+            #endregion
         }
     }
 }
