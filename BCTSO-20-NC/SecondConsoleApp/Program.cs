@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Net.Http.Headers;
 using System.Security.AccessControl;
 
 namespace SecondConsoleApp
@@ -121,14 +122,17 @@ namespace SecondConsoleApp
 
             #region ლექცია 12 მონაცემთა სტრუქტურები
 
-            List<string> names = new()
-            {
-                "Nika",
-                "Giorgi",
-                "Daviti",
-                "Mariami"
-            };
-
+            //List<string> names = new()
+            //{
+            //    "Nika",
+            //    "Nika",
+            //    "Giorgi",
+            //    "Giorgi",
+            //    "Daviti",
+            //    "Daviti",
+            //    "Mariami",
+            //    "Tamazi"
+            //};
 
 
             //LINKEDLIST
@@ -142,15 +146,39 @@ namespace SecondConsoleApp
             //people.Dequeue();
 
 
+            //STACK
+            //Stack<string> stack = new(names);
+            //stack.Push("Jemali");
+            //stack.Pop();
 
-            //შექმენით ექიმის კლასი რომელსაც ექნება მხოლოდ სახელი
-            //შექმენით პაციენტის კლასი რომელსაც ექნება სახელი
-            //ააწყვეთ პაციენტების რიგის ლოგიკა ყოველ ჯერზე როცა ექიმი დაასრულებს
-            //პაციენტს გამოკვლევას მოხდეს პაციენტის გადამისამართება ისტორიის List ში
-            //და ექიმთან ვიზიტზე შევიდეს ახალი პაციენტი.
+
+            //HASHSET
+            //HashSet<string> people = new(names);
+            //HashSet<string> people2 = new(names2);
+
+            //people.IntersectWith(people2);
+
+
+
+            //DICTIONARY
+            //Dictionary<string, string> countriesWithCuurency = new()
+            //{
+            //    {"Georgia","GEL" },
+            //    {"USA","USD" },
+            //    {"Japan","JYP" }
+            //};
+
+
+
+            int[] intAr = { 8, 8, 8 };
+            var res = CustomAlgorithms.Sum(intAr);
+
 
 
             #endregion
+
+
         }
+
     }
 }
