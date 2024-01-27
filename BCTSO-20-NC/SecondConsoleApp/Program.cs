@@ -178,6 +178,13 @@ namespace SecondConsoleApp
             #endregion
 
 
+
+            int[] intAr = { 100, 5, 4, 12, 522 };
+            string[] texts = { "asdasd", "asdasd", "q2asd", "fafs" };
+
+            var result = CustomAlgorithms.Sort(intAr);
+
+
         }
 
     }

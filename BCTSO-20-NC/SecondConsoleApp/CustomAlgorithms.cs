@@ -2,7 +2,7 @@
 {
     public static class CustomAlgorithms
     {
-        public static int[] Clear(int[] array)
+        public static T[] SetDefaultValue<T>(T[] array)
         {
             for (int i = 0; i < array.Length; i++)
             {
@@ -11,26 +11,26 @@
 
             return array;
         }
-        public static int GetLastElement(int[] array)
+        public static T GetLastElement<T>(T[] array)
         {
             return array[array.Length - 1];
         }
-        public static int[] FindAll(int[] array, int element)
+        public static T[] FindAll<T>(T[] array, T element)
         {
             int counter = 0;
 
             for (int i = 0; i < array.Length; i++)
             {
-                if (array[i] == element)
+                if (array[i].Equals(element))
                     counter++;
             }
 
-            int[] result = new int[counter];
+            T[] result = new T[counter];
             int resultIndex = 0;
 
             for (int i = 0; i < array.Length; i++)
             {
-                if (array[i] == element)
+                if (array[i].Equals(element))
                 {
                     result[resultIndex] = element;
                     resultIndex++;
@@ -39,13 +39,13 @@
 
             return result;
         }
-        public static List<int> FindAll(List<int> intList, int element)
+        public static List<T> FindAll<T>(List<T> intList, T element)
         {
-            List<int> result = new List<int>();
+            List<T> result = new List<T>();
 
             for (int i = 0; i < intList.Count; i++)
             {
-                if (intList[i] == element)
+                if (intList[i].Equals(element))
                 {
                     result.Add(element);
                 }
@@ -53,11 +53,11 @@
 
             return result;
         }
-        public static int FindIndex(int[] array, int element)
+        public static int FindIndex<T>(T[] array, T element)
         {
             for (int i = 0; i < array.Length; i++)
             {
-                if (array[i] == element)
+                if (array[i].Equals(element))
                 {
                     return i;
                 }
@@ -65,11 +65,11 @@
 
             return -1;
         }
-        public static int FindLastIndex(int[] array, int element)
+        public static int FindLastIndex<T>(T[] array, T element)
         {
             for (int i = array.Length - 1; i >= 0; i--)
             {
-                if (array[i] == element)
+                if (array[i].Equals(element))
                 {
                     return i;
                 }
@@ -77,11 +77,11 @@
 
             return -1;
         }
-        public static int FirstOrDefault(int[] array, int element)
+        public static T FirstOrDefault<T>(T[] array, T element)
         {
             for (int i = 0; i < array.Length; i++)
             {
-                if (array[i] == element)
+                if (array[i].Equals(element))
                 {
                     return element;
                 }
@@ -89,11 +89,11 @@
 
             return default;
         }
-        public static int LastOrDefault(int[] array, int element)
+        public static T LastOrDefault<T>(T[] array, T element)
         {
             for (int i = array.Length - 1; i >= 0; i--)
             {
-                if (array[i] == element)
+                if (array[i].Equals(element))
                 {
                     return element;
                 }
@@ -101,9 +101,9 @@
 
             return default;
         }
-        public static int[] Reverse(int[] array)
+        public static T[] Reverse<T>(T[] array)
         {
-            Stack<int> stackResult = new();
+            Stack<T> stackResult = new();
 
             for (int i = 0; i < array.Length; i++)
             {
@@ -113,9 +113,9 @@
             return stackResult.ToArray();
         }
 
-        //public static int[] ReverseForArray(int[] array)
+        //public static T[] ReverseForArray<T>(T[] array)
         //{
-        //    List<int> result = new();
+        //    List<T> result = new();
 
         //    //for (int i = 0; i < array.Length; i++)
         //    //{
@@ -129,15 +129,15 @@
 
         //    return result.ToArray();
         //}
-        public static int[] Sort(int[] array)
+        public static T[] Sort<T>(T[] array) where T : IComparable<T>
         {
             for (int i = 0; i < array.Length - 1; i++)
             {
                 for (int j = i + 1; j < array.Length; j++)
                 {
-                    if (array[j] < array[i])
+                    if (array[j].CompareTo(array[i]) == -1)
                     {
-                        int t = array[j];
+                        T t = array[j];
                         array[j] = array[i];
                         array[i] = t;
                     }
@@ -146,11 +146,11 @@
 
             return array;
         }
-        public static bool Any(int[] array, int element)
+        public static bool Any<T>(T[] array, T element)
         {
             for (int i = 0; i < array.Length; i++)
             {
-                if (array[i] == element)
+                if (array[i].Equals(element))
                 {
                     return true;
                 }
@@ -158,11 +158,11 @@
 
             return false;
         }
-        public static bool All(int[] array, int element)
+        public static bool All<T>(T[] array, T element)
         {
             for (int i = 0; i < array.Length; i++)
             {
-                if (array[i] != element)
+                if (!array[i].Equals(element))
                 {
                     return false;
                 }
@@ -181,5 +181,6 @@
 
             return result;
         }
+
     }
 }
