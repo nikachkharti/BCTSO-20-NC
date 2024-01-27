@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
+using System.Runtime.InteropServices;
 using System.Security.AccessControl;
 
 namespace SecondConsoleApp
@@ -178,11 +179,17 @@ namespace SecondConsoleApp
             #endregion
 
 
+            #region ლექცია 13 Generic
+            //int[] intAr = { 100, 5, 4, 12, 522 };
+            //string[] texts = { "asdasd", "asdasd", "q2asd", "fafs" };
 
-            int[] intAr = { 100, 5, 4, 12, 522 };
-            string[] texts = { "asdasd", "asdasd", "q2asd", "fafs" };
+            //var result = CustomAlgorithms.Sort(intAr);
+            #endregion
 
-            var result = CustomAlgorithms.Sort(intAr);
+
+
+
+
 
 
         }

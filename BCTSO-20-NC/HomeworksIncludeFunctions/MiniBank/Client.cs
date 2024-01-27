@@ -4,9 +4,9 @@
     {
         public Account Account { get; set; } // კომპოზიცია Navigation Property
 
-        public override string ToString()
-        {
-            return $"{Account.Balance}";
-        }
+        //public override string ToString()
+        //{
+        //    return $"{Account.Balance}";
+        //}
     }
 }
