@@ -1,6 +1,6 @@
-﻿namespace SecondConsoleApp
+﻿namespace Homeworks
 {
-    public static class CustomAlgorithms
+    public class CustomAlgorithms
     {
         public static T[] SetDefaultValue<T>(T[] array)
         {
