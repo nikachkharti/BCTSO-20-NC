@@ -1,5 +1,14 @@
 ﻿namespace Homeworks
 {
+
+    //დელეგატი არის ტიპი რომელსაც შეუძლია ფუნქციის მინიჭება 
+
+    //FUNC --- ინიჭებს ისეთ ფუნქციას რომლის დასაბრუნებელ მნიშვნელობასაც ირჩევთ თავად
+    //ACTION --- ინიჭებს ისეთ ფუნქციას რომელიც არის void ტიპის
+
+    //PREDICATE --- ინიჭებს ისეთ ფუნქციას რომელიც აბრუნებს bool მნიშვნელობას
+
+
     public class CustomAlgorithms
     {
         public static T[] SetDefaultValue<T>(T[] array)
@@ -15,44 +24,64 @@
         {
             return array[array.Length - 1];
         }
-        public static T[] FindAll<T>(T[] array, T element)
+
+        //public static T[] FindAllForArray<T>(T[] array, T element)
+        //{
+        //    int counter = 0;
+
+        //    for (int i = 0; i < array.Length; i++)
+        //    {
+        //        if (array[i].Equals(element))
+        //            counter++;
+        //    }
+
+        //    T[] result = new T[counter];
+        //    int resultIndex = 0;
+
+        //    for (int i = 0; i < array.Length; i++)
+        //    {
+        //        if (array[i].Equals(element))
+        //        {
+        //            result[resultIndex] = element;
+        //            resultIndex++;
+        //        }
+        //    }
+
+        //    return result;
+        //}
+
+        public static T[] FindAll<T>(T[] array, Func<T, bool> filter)
         {
-            int counter = 0;
+            List<T> result = new List<T>();
 
             for (int i = 0; i < array.Length; i++)
             {
-                if (array[i].Equals(element))
-                    counter++;
-            }
-
-            T[] result = new T[counter];
-            int resultIndex = 0;
-
-            for (int i = 0; i < array.Length; i++)
-            {
-                if (array[i].Equals(element))
+                if (filter(array[i]))
                 {
-                    result[resultIndex] = element;
-                    resultIndex++;
+                    result.Add(array[i]);
                 }
             }
 
-            return result;
+            return result.ToArray();
         }
-        public static List<T> FindAll<T>(List<T> intList, T element)
+
+        public static List<T> FindAll<T>(List<T> intList, Predicate<T> filter)
         {
             List<T> result = new List<T>();
 
             for (int i = 0; i < intList.Count; i++)
             {
-                if (intList[i].Equals(element))
+                if (filter(intList[i]))
                 {
-                    result.Add(element);
+                    result.Add(intList[i]);
                 }
             }
 
             return result;
         }
+
+
+
         public static int FindIndex<T>(T[] array, T element)
         {
             for (int i = 0; i < array.Length; i++)

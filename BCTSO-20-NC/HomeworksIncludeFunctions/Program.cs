@@ -1386,14 +1386,20 @@ for (int i = 0; i < collection.Length - 1; i++)
 #region ლექცია 13 Generic
 
 
-string[] data = File.ReadAllLines(@"../../../vehicles.csv");
-Vehicle[] cars = Select(data);
-//var mercedeses = AllMercedeses(cars, "Mercedes");
-var sortedCars = SortByConsumption(cars);
-var mostEconomic = Take(sortedCars, 100);
+//string[] data = File.ReadAllLines(@"../../../vehicles.csv");
+//Vehicle[] cars = Select(data);
+////var mercedeses = AllMercedeses(cars, "Mercedes");
+//var sortedCars = SortByConsumption(cars);
+//var mostEconomic = Take(sortedCars, 100);
 
 
 
+int[] intAr = { 11, 2, 1, 31, 24, 55, 55, -678 };
+List<string> names = new() { "Aleksandare", "Sandro", "Otar", "Otar" };
+
+
+
+var result = CustomAlgorithms.FindAll(names, endsWithR);
 
 
 
@@ -1401,64 +1407,94 @@ var mostEconomic = Take(sortedCars, 100);
 Console.ReadLine();
 
 
-Vehicle[] Take(Vehicle[] cars, int quantity)
+bool endsWithR(string name)
 {
-    if (quantity > cars.Length)
-        throw new ArgumentOutOfRangeException();
-
-    Vehicle[] result = new Vehicle[quantity];
-
-    for (int i = 0; i < quantity; i++)
-    {
-        result[i] = sortedCars[i];
-    }
-
-    return result;
+    return name.EndsWith("R".ToLower());
 }
 
-Vehicle[] SortByConsumption(Vehicle[] cars)
-{
-    for (int i = 0; i < cars.Length - 1; i++)
-    {
-        for (int j = i + 1; j < cars.Length; j++)
-        {
-            if (cars[j].Combined > cars[i].Combined)
-            {
-                Vehicle t = cars[j];
-                cars[j] = cars[i];
-                cars[i] = t;
-            }
-        }
-    }
 
-    return cars;
+bool IsNegative(int number)
+{
+    return number < 0;
 }
 
-Vehicle[] AllMercedeses(Vehicle[] cars, string carName)
+bool IsOdd(int number)
 {
-    List<Vehicle> result = new();
-    for (int i = 0; i < cars.Length; i++)
-    {
-        if (cars[i].Make.Contains(carName, StringComparison.OrdinalIgnoreCase))
-        {
-            result.Add(cars[i]);
-        }
-    }
-
-    return result.ToArray();
+    return number % 2 != 0;
 }
 
-Vehicle[] Select(string[] data)
+bool LessThanFive(int number)
 {
-    Vehicle[] result = new Vehicle[data.Length];
+    //if (number < 5)
+    //{
+    //    return true;
+    //}
+    //return false;
 
-    for (int i = 0; i < data.Length; i++)
-    {
-        result[i] = Vehicle.Parse(data[i]);
-    }
-
-    return result;
+    return number < 5;
 }
+
+
+
+
+//Vehicle[] Take(Vehicle[] cars, int quantity)
+//{
+//    if (quantity > cars.Length)
+//        throw new ArgumentOutOfRangeException();
+
+//    Vehicle[] result = new Vehicle[quantity];
+
+//    for (int i = 0; i < quantity; i++)
+//    {
+//        result[i] = sortedCars[i];
+//    }
+
+//    return result;
+//}
+
+//Vehicle[] SortByConsumption(Vehicle[] cars)
+//{
+//    for (int i = 0; i < cars.Length - 1; i++)
+//    {
+//        for (int j = i + 1; j < cars.Length; j++)
+//        {
+//            if (cars[j].Combined > cars[i].Combined)
+//            {
+//                Vehicle t = cars[j];
+//                cars[j] = cars[i];
+//                cars[i] = t;
+//            }
+//        }
+//    }
+
+//    return cars;
+//}
+
+//Vehicle[] AllMercedeses(Vehicle[] cars, string carName)
+//{
+//    List<Vehicle> result = new();
+//    for (int i = 0; i < cars.Length; i++)
+//    {
+//        if (cars[i].Make.Contains(carName, StringComparison.OrdinalIgnoreCase))
+//        {
+//            result.Add(cars[i]);
+//        }
+//    }
+
+//    return result.ToArray();
+//}
+
+//Vehicle[] Select(string[] data)
+//{
+//    Vehicle[] result = new Vehicle[data.Length];
+
+//    for (int i = 0; i < data.Length; i++)
+//    {
+//        result[i] = Vehicle.Parse(data[i]);
+//    }
+
+//    return result;
+//}
 
 
 
