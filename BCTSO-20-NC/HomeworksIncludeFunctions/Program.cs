@@ -3,6 +3,7 @@ using Homeworks.MiniBank;
 using Homeworks.MiniBank.Logger;
 using Homeworks.MyExceptions;
 using System.Collections;
+using System.Numerics;
 
 Console.WriteLine();
 #region 1 ლექცია
@@ -1384,15 +1385,83 @@ for (int i = 0; i < collection.Length - 1; i++)
 
 #region ლექცია 13 Generic
 
-string[] carText = File.ReadAllLines(@"../../../vehicles.csv");
 
-//1.შექმენით მანქანის აღნიშვნელი კლასი.
-//2.დაწერეთ ფუნქცია რომელიც მანქანების მასივის ერთ ჩანაწერს გარდაქმნის ერთ კონკრეტულ მანქანის ობიექტად.
-//3.მოიფიქრეთ როგორ გარდაქმნათ ყველა ჩანაწერი მანქანის ობიექტად
+string[] data = File.ReadAllLines(@"../../../vehicles.csv");
+Vehicle[] cars = Select(data);
+//var mercedeses = AllMercedeses(cars, "Mercedes");
+var sortedCars = SortByConsumption(cars);
+var mostEconomic = Take(sortedCars, 100);
 
-//4.მოძებნეთ ყველა Mercedes.
-//5.მოძებნეთ 10 ყველაზე ეკონომიური მანქნა.
-//6.დაალაგეთ მანქანები ეკონომიურობის მიხედვით.
+
+
+
+
+
+
+Console.ReadLine();
+
+
+Vehicle[] Take(Vehicle[] cars, int quantity)
+{
+    if (quantity > cars.Length)
+        throw new ArgumentOutOfRangeException();
+
+    Vehicle[] result = new Vehicle[quantity];
+
+    for (int i = 0; i < quantity; i++)
+    {
+        result[i] = sortedCars[i];
+    }
+
+    return result;
+}
+
+Vehicle[] SortByConsumption(Vehicle[] cars)
+{
+    for (int i = 0; i < cars.Length - 1; i++)
+    {
+        for (int j = i + 1; j < cars.Length; j++)
+        {
+            if (cars[j].Combined > cars[i].Combined)
+            {
+                Vehicle t = cars[j];
+                cars[j] = cars[i];
+                cars[i] = t;
+            }
+        }
+    }
+
+    return cars;
+}
+
+Vehicle[] AllMercedeses(Vehicle[] cars, string carName)
+{
+    List<Vehicle> result = new();
+    for (int i = 0; i < cars.Length; i++)
+    {
+        if (cars[i].Make.Contains(carName, StringComparison.OrdinalIgnoreCase))
+        {
+            result.Add(cars[i]);
+        }
+    }
+
+    return result.ToArray();
+}
+
+Vehicle[] Select(string[] data)
+{
+    Vehicle[] result = new Vehicle[data.Length];
+
+    for (int i = 0; i < data.Length; i++)
+    {
+        result[i] = Vehicle.Parse(data[i]);
+    }
+
+    return result;
+}
+
+
+
 
 
 #endregion
