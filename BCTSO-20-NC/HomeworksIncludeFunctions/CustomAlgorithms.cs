@@ -1,14 +1,5 @@
 ﻿namespace Homeworks
 {
-
-    //დელეგატი არის ტიპი რომელსაც შეუძლია ფუნქციის მინიჭება 
-
-    //FUNC --- ინიჭებს ისეთ ფუნქციას რომლის დასაბრუნებელ მნიშვნელობასაც ირჩევთ თავად
-    //ACTION --- ინიჭებს ისეთ ფუნქციას რომელიც არის void ტიპის
-
-    //PREDICATE --- ინიჭებს ისეთ ფუნქციას რომელიც აბრუნებს bool მნიშვნელობას
-
-
     public class CustomAlgorithms
     {
         public static T[] SetDefaultValue<T>(T[] array)
@@ -49,7 +40,6 @@
 
         //    return result;
         //}
-
         public static T[] FindAll<T>(T[] array, Func<T, bool> filter)
         {
             List<T> result = new List<T>();
@@ -64,7 +54,6 @@
 
             return result.ToArray();
         }
-
         public static List<T> FindAll<T>(List<T> intList, Predicate<T> filter)
         {
             List<T> result = new List<T>();
@@ -79,9 +68,6 @@
 
             return result;
         }
-
-
-
         public static int FindIndex<T>(T[] array, T element)
         {
             for (int i = 0; i < array.Length; i++)
@@ -210,5 +196,34 @@
 
             return result;
         }
+
+        //Vehicle[] Take(Vehicle[] cars, int quantity)
+        //{
+        //    if (quantity > cars.Length)
+        //        throw new ArgumentOutOfRangeException();
+
+        //    Vehicle[] result = new Vehicle[quantity];
+
+        //    for (int i = 0; i < quantity; i++)
+        //    {
+        //        result[i] = sortedCars[i];
+        //    }
+
+        //    return result;
+        //}
+
+
+        Vehicle[] Select(string[] data)
+        {
+            Vehicle[] result = new Vehicle[data.Length];
+
+            for (int i = 0; i < data.Length; i++)
+            {
+                result[i] = Vehicle.Parse(data[i]);
+            }
+
+            return result;
+        }
+
     }
 }

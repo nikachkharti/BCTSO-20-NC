@@ -1394,107 +1394,14 @@ for (int i = 0; i < collection.Length - 1; i++)
 
 
 
-int[] intAr = { 11, 2, 1, 31, 24, 55, 55, -678 };
-List<string> names = new() { "Aleksandare", "Sandro", "Otar", "Otar" };
-
-
-
-var result = CustomAlgorithms.FindAll(names, endsWithR);
-
-
-
 
 Console.ReadLine();
 
 
-bool endsWithR(string name)
-{
-    return name.EndsWith("R".ToLower());
-}
-
-
-bool IsNegative(int number)
-{
-    return number < 0;
-}
-
-bool IsOdd(int number)
-{
-    return number % 2 != 0;
-}
-
-bool LessThanFive(int number)
-{
-    //if (number < 5)
-    //{
-    //    return true;
-    //}
-    //return false;
-
-    return number < 5;
-}
 
 
 
 
-//Vehicle[] Take(Vehicle[] cars, int quantity)
-//{
-//    if (quantity > cars.Length)
-//        throw new ArgumentOutOfRangeException();
-
-//    Vehicle[] result = new Vehicle[quantity];
-
-//    for (int i = 0; i < quantity; i++)
-//    {
-//        result[i] = sortedCars[i];
-//    }
-
-//    return result;
-//}
-
-//Vehicle[] SortByConsumption(Vehicle[] cars)
-//{
-//    for (int i = 0; i < cars.Length - 1; i++)
-//    {
-//        for (int j = i + 1; j < cars.Length; j++)
-//        {
-//            if (cars[j].Combined > cars[i].Combined)
-//            {
-//                Vehicle t = cars[j];
-//                cars[j] = cars[i];
-//                cars[i] = t;
-//            }
-//        }
-//    }
-
-//    return cars;
-//}
-
-//Vehicle[] AllMercedeses(Vehicle[] cars, string carName)
-//{
-//    List<Vehicle> result = new();
-//    for (int i = 0; i < cars.Length; i++)
-//    {
-//        if (cars[i].Make.Contains(carName, StringComparison.OrdinalIgnoreCase))
-//        {
-//            result.Add(cars[i]);
-//        }
-//    }
-
-//    return result.ToArray();
-//}
-
-//Vehicle[] Select(string[] data)
-//{
-//    Vehicle[] result = new Vehicle[data.Length];
-
-//    for (int i = 0; i < data.Length; i++)
-//    {
-//        result[i] = Vehicle.Parse(data[i]);
-//    }
-
-//    return result;
-//}
 
 
 

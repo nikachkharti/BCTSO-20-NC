@@ -185,6 +185,19 @@ namespace SecondConsoleApp
 
             //var result = CustomAlgorithms.Sort(intAr);
             #endregion
+
+
+
+            #region 14 Delegate ანონომური ფუნქციები
+
+            //დელეგატი არის ტიპი რომელსაც შეუძლია ფუნქციის მინიჭება 
+
+            //FUNC --- ინიჭებს ისეთ ფუნქციას რომლის დასაბრუნებელ მნიშვნელობასაც ირჩევთ თავად
+            //ACTION --- ინიჭებს ისეთ ფუნქციას რომელიც არის void ტიპის
+
+            //PREDICATE --- ინიჭებს ისეთ ფუნქციას რომელიც აბრუნებს bool მნიშვნელობას
+
+            #endregion
         }
 
     }
