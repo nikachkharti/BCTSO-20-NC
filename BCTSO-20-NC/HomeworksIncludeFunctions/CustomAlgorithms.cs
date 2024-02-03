@@ -40,51 +40,41 @@
 
         //    return result;
         //}
-        public static T[] FindAll<T>(T[] array, Func<T, bool> filter)
+
+        public static IEnumerable<T> FindAll<T>(IEnumerable<T> collection, Predicate<T> predicate)
         {
             List<T> result = new List<T>();
 
-            for (int i = 0; i < array.Length; i++)
+            foreach (var item in collection)
             {
-                if (filter(array[i]))
+                if (predicate(item))
                 {
-                    result.Add(array[i]);
-                }
-            }
-
-            return result.ToArray();
-        }
-        public static List<T> FindAll<T>(List<T> intList, Predicate<T> filter)
-        {
-            List<T> result = new List<T>();
-
-            for (int i = 0; i < intList.Count; i++)
-            {
-                if (filter(intList[i]))
-                {
-                    result.Add(intList[i]);
+                    result.Add(item);
                 }
             }
 
             return result;
         }
-        public static int FindIndex<T>(T[] array, T element)
+        public static int FindIndex<T>(IEnumerable<T> array, Predicate<T> predicate)
         {
-            for (int i = 0; i < array.Length; i++)
+            int indexCount = 0;
+            foreach (var item in array)
             {
-                if (array[i].Equals(element))
+                if (predicate(item))
                 {
-                    return i;
+                    return indexCount;
                 }
+                indexCount++;
             }
 
             return -1;
         }
-        public static int FindLastIndex<T>(T[] array, T element)
+
+        public static int FindLastIndex<T>(T[] array, Func<T, bool> predicate)
         {
             for (int i = array.Length - 1; i >= 0; i--)
             {
-                if (array[i].Equals(element))
+                if (predicate(array[i]))
                 {
                     return i;
                 }
@@ -92,25 +82,25 @@
 
             return -1;
         }
-        public static T FirstOrDefault<T>(T[] array, T element)
+        public static T FirstOrDefault<T>(T[] array, Func<T, bool> predicate)
         {
             for (int i = 0; i < array.Length; i++)
             {
-                if (array[i].Equals(element))
+                if (predicate(array[i]))
                 {
-                    return element;
+                    return array[i];
                 }
             }
 
             return default;
         }
-        public static T LastOrDefault<T>(T[] array, T element)
+        public static T LastOrDefault<T>(T[] array, Func<T, bool> predicate)
         {
             for (int i = array.Length - 1; i >= 0; i--)
             {
-                if (array[i].Equals(element))
+                if (predicate(array[i]))
                 {
-                    return element;
+                    return array[i];
                 }
             }
 
@@ -128,6 +118,7 @@
             return stackResult.ToArray();
         }
 
+
         //public static T[] ReverseForArray<T>(T[] array)
         //{
         //    List<T> result = new();
@@ -144,6 +135,8 @@
 
         //    return result.ToArray();
         //}
+
+
         public static T[] Sort<T>(T[] array) where T : IComparable<T>
         {
             for (int i = 0; i < array.Length - 1; i++)
@@ -161,11 +154,13 @@
 
             return array;
         }
-        public static bool Any<T>(T[] array, T element)
+
+
+        public static bool Any<T>(T[] array, Func<T, bool> predicate)
         {
             for (int i = 0; i < array.Length; i++)
             {
-                if (array[i].Equals(element))
+                if (predicate(array[i]))
                 {
                     return true;
                 }
@@ -173,11 +168,11 @@
 
             return false;
         }
-        public static bool All<T>(T[] array, T element)
+        public static bool All<T>(T[] array, Func<T, bool> predicate)
         {
             for (int i = 0; i < array.Length; i++)
             {
-                if (!array[i].Equals(element))
+                if (!predicate(array[i]))
                 {
                     return false;
                 }
@@ -185,6 +180,7 @@
 
             return true;
         }
+
         public static int Sum(int[] array)
         {
             int result = 0;
@@ -196,30 +192,41 @@
 
             return result;
         }
-
-        //Vehicle[] Take(Vehicle[] cars, int quantity)
-        //{
-        //    if (quantity > cars.Length)
-        //        throw new ArgumentOutOfRangeException();
-
-        //    Vehicle[] result = new Vehicle[quantity];
-
-        //    for (int i = 0; i < quantity; i++)
-        //    {
-        //        result[i] = sortedCars[i];
-        //    }
-
-        //    return result;
-        //}
-
-
-        Vehicle[] Select(string[] data)
+        public static int Sum(int[] array, Predicate<int> predicate)
         {
-            Vehicle[] result = new Vehicle[data.Length];
+            int result = 0;
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (predicate(array[i]))
+                {
+                    result += array[i];
+                }
+            }
+
+            return result;
+        }
+
+
+        public static IEnumerable<T> Take<T>(IEnumerable<T> collection, int quantity)
+        {
+            List<T> result = new List<T>();
+
+            foreach (var item in collection)
+            {
+                result.Add(item);
+            }
+
+            return result;
+        }
+
+        public static TResult[] Select<TSource, TResult>(TSource[] data, Func<TSource, TResult> selector)
+        {
+            TResult[] result = new TResult[data.Length];
 
             for (int i = 0; i < data.Length; i++)
             {
-                result[i] = Vehicle.Parse(data[i]);
+                result[i] = selector(data[i]);
             }
 
             return result;

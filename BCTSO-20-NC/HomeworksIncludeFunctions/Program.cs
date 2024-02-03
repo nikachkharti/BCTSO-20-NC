@@ -1387,24 +1387,39 @@ for (int i = 0; i < collection.Length - 1; i++)
 
 
 //string[] data = File.ReadAllLines(@"../../../vehicles.csv");
-//Vehicle[] cars = Select(data);
-////var mercedeses = AllMercedeses(cars, "Mercedes");
+//Vehicle[] cars = CustomAlgorithms.Select(data, Vehicle.Parse);
+
+//var mercedeses = AllMercedeses(cars, "Mercedes");
 //var sortedCars = SortByConsumption(cars);
 //var mostEconomic = Take(sortedCars, 100);
 
+
+//string[] ar = { "1", "2", "3", "4" };
+//var x = CustomAlgorithms.Select(ar, int.Parse);
+
+
+
+#endregion
+
+
+
+
+#region ლექცია 14 მონცაემთა სტრუქუტრების ინტერფეისები Regex
+
+
+
+int[] intAr = { 1, 2, 3, 4, 5, 6 };
+List<int> intList = new() { 1, 2, 3, 4, 5, 6 };
+LinkedList<int> intLinkedList = new(intList);
+HashSet<int> intSet = new() { 1, 2, 3, 4, 5, 6 };
+
+
+var result = CustomAlgorithms.Take(intAr, 3);
 
 
 
 Console.ReadLine();
 
-
-
-
-
-
-
-
-
-
-
 #endregion
+
+
