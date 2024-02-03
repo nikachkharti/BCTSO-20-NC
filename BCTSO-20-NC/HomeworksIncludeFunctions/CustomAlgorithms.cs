@@ -210,14 +210,7 @@
 
         public static IEnumerable<T> Take<T>(IEnumerable<T> collection, int quantity)
         {
-            List<T> result = new List<T>();
-
-            foreach (var item in collection)
-            {
-                result.Add(item);
-            }
-
-            return result;
+            throw new NotImplementedException();
         }
 
         public static TResult[] Select<TSource, TResult>(TSource[] data, Func<TSource, TResult> selector)

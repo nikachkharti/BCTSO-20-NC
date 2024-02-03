@@ -4,6 +4,8 @@ using Homeworks.MiniBank.Logger;
 using Homeworks.MyExceptions;
 using System.Collections;
 using System.Numerics;
+using System.Text;
+using System.Text.RegularExpressions;
 
 Console.WriteLine();
 #region 1 ლექცია
@@ -1407,18 +1409,45 @@ for (int i = 0; i < collection.Length - 1; i++)
 #region ლექცია 14 მონცაემთა სტრუქუტრების ინტერფეისები Regex
 
 
-
-int[] intAr = { 1, 2, 3, 4, 5, 6 };
-List<int> intList = new() { 1, 2, 3, 4, 5, 6 };
-LinkedList<int> intLinkedList = new(intList);
-HashSet<int> intSet = new() { 1, 2, 3, 4, 5, 6 };
-
-
-var result = CustomAlgorithms.Take(intAr, 3);
+//int[] intAr = { 1, 2, 3, 4, 5, 6 };
+//List<int> intList = new() { 1, 2, 3, 4, 5, 6 };
+//LinkedList<int> intLinkedList = new(intList);
+//HashSet<int> intSet = new() { 1, 2, 3, 4, 5, 6 };
 
 
+//var result = CustomAlgorithms.Take(intAr, 3);
 
-Console.ReadLine();
+
+
+
+//Regex Regular expressions
+
+
+//www.test.com
+//test@gmail.com
+//Inv12345
+//12/1/2024 (თვე დღე წელი)
+
+
+// () {} [] ---> [მოსაძებნი მნიშვნელობა]   {მოსაძებნი მნიშვნელობის ზომა}  (დაჯგუფებისთვის)
+// ^  ---> Regex გამოსხულების დაწყება
+// $  ---> Regex გამოსხულების დასრულება
+
+
+//a-g
+
+Console.Write("ENTER TEXT: ");
+string data = Console.ReadLine();
+string expression = "^www.[a-z0-9A-Z]+.(com|ge|ru|uk)$";
+
+
+
+Regex regex = new(expression);
+Console.WriteLine(regex.IsMatch(data));
+
+
+
+
 
 #endregion
 

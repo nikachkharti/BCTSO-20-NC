@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FirstConsoleApp", "FirstCon
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Homeworks", "HomeworksIncludeFunctions\Homeworks.csproj", "{042E6936-AF54-4354-A792-4F2036EBA2E6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecondConsoleApp", "SecondConsoleApp\SecondConsoleApp.csproj", "{866786E0-4EC3-4269-9199-CC5235E45C22}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SecondConsoleApp", "SecondConsoleApp\SecondConsoleApp.csproj", "{866786E0-4EC3-4269-9199-CC5235E45C22}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
