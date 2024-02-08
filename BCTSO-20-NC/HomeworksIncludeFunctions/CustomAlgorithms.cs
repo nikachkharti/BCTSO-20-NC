@@ -1,21 +1,8 @@
 ﻿namespace Homeworks
 {
-    public class CustomAlgorithms
+    public static class CustomAlgorithms
     {
-        public static T[] SetDefaultValue<T>(T[] array)
-        {
-            for (int i = 0; i < array.Length; i++)
-            {
-                array[i] = default;
-            }
-
-            return array;
-        }
-        public static T GetLastElement<T>(T[] array)
-        {
-            return array[array.Length - 1];
-        }
-
+        #region EXTRA
         //public static T[] FindAllForArray<T>(T[] array, T element)
         //{
         //    int counter = 0;
@@ -40,20 +27,28 @@
 
         //    return result;
         //}
+        #endregion
 
-        public static IEnumerable<T> FindAll<T>(IEnumerable<T> collection, Predicate<T> predicate)
+        public static IEnumerable<T> CustomDistinct<T>(this IEnumerable<T> source, IEqualityComparer<T> equalityComparer = null)
         {
-            List<T> result = new List<T>();
+            HashSet<T> set = new(equalityComparer);
 
-            foreach (var item in collection)
+            foreach (var item in source)
+            {
+                set.Add(item);
+            }
+            return set;
+        }
+        public static IEnumerable<T> CustomFindAll<T>(this IEnumerable<T> source, Predicate<T> predicate)
+        {
+            foreach (var item in source)
             {
                 if (predicate(item))
                 {
-                    result.Add(item);
+                    yield return item;
                 }
             }
 
-            return result;
         }
         public static int FindIndex<T>(IEnumerable<T> array, Predicate<T> predicate)
         {
@@ -65,19 +60,6 @@
                     return indexCount;
                 }
                 indexCount++;
-            }
-
-            return -1;
-        }
-
-        public static int FindLastIndex<T>(T[] array, Func<T, bool> predicate)
-        {
-            for (int i = array.Length - 1; i >= 0; i--)
-            {
-                if (predicate(array[i]))
-                {
-                    return i;
-                }
             }
 
             return -1;
@@ -118,7 +100,6 @@
             return stackResult.ToArray();
         }
 
-
         //public static T[] ReverseForArray<T>(T[] array)
         //{
         //    List<T> result = new();
@@ -135,27 +116,23 @@
 
         //    return result.ToArray();
         //}
-
-
-        public static T[] Sort<T>(T[] array) where T : IComparable<T>
+        public static IList<T> CustomOrderBy<T>(this IList<T> source, Func<T, T, bool> comparer)
         {
-            for (int i = 0; i < array.Length - 1; i++)
+            for (int i = 0; i < source.Count - 1; i++)
             {
-                for (int j = i + 1; j < array.Length; j++)
+                for (int j = i + 1; j < source.Count; j++)
                 {
-                    if (array[j].CompareTo(array[i]) == -1)
+                    if (comparer(source[j], source[i]))
                     {
-                        T t = array[j];
-                        array[j] = array[i];
-                        array[i] = t;
+                        T t = source[j];
+                        source[j] = source[i];
+                        source[i] = t;
                     }
                 }
             }
 
-            return array;
+            return source;
         }
-
-
         public static bool Any<T>(T[] array, Func<T, bool> predicate)
         {
             for (int i = 0; i < array.Length; i++)
@@ -180,7 +157,6 @@
 
             return true;
         }
-
         public static int Sum(int[] array)
         {
             int result = 0;
@@ -206,24 +182,30 @@
 
             return result;
         }
-
-
-        public static IEnumerable<T> Take<T>(IEnumerable<T> collection, int quantity)
+        public static IEnumerable<T> CustomTake<T>(this IEnumerable<T> source, int quantity)
         {
-            throw new NotImplementedException();
-        }
-
-        public static TResult[] Select<TSource, TResult>(TSource[] data, Func<TSource, TResult> selector)
-        {
-            TResult[] result = new TResult[data.Length];
-
-            for (int i = 0; i < data.Length; i++)
+            foreach (var item in source)
             {
-                result[i] = selector(data[i]);
+                if (quantity == 0)
+                    yield break;
+
+                yield return item;
+                quantity--;
             }
-
-            return result;
         }
+        public static IEnumerable<TResult> CustomSelect<TSource, TResult>(this IEnumerable<TSource> source, Func<TSource, TResult> selector)
+        {
+            foreach (var item in source)
+                yield return selector(item);
+        }
+        public static IEnumerable<T> CustomForeach<T>(this IEnumerable<T> source)
+        {
+            var sourceEnumerator = source.GetEnumerator();
 
+            while (sourceEnumerator.MoveNext())
+            {
+                yield return sourceEnumerator.Current;
+            }
+        }
     }
 }

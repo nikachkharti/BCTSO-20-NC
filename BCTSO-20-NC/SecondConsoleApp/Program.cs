@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using Homeworks;
+using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Net.Http.Headers;
 using System.Runtime.InteropServices;
 using System.Security.AccessControl;
@@ -196,6 +198,31 @@ namespace SecondConsoleApp
             //ACTION --- ინიჭებს ისეთ ფუნქციას რომელიც არის void ტიპის
 
             //PREDICATE --- ინიჭებს ისეთ ფუნქციას რომელიც აბრუნებს bool მნიშვნელობას
+
+
+
+
+
+
+            #endregion
+
+
+            #region 15 Extension methods Value ref
+            //List<int> intList = new() { 22, 22, 22, 71, 4, 3, 2 };
+            //var result = intList
+            //    .CustomDistinct();
+
+            //var allOdds = CustomAlgorithms.FindAll(intList, x => x % 2 != 0);
+            //var allOdsMulitple3 = CustomAlgorithms.Select(allOdds, x => x *= 3);
+
+
+
+            //IEnumerable<int> result = intList
+            //    .Where(x => x % 2 != 0)
+            //    .Select(x => x *= 3);
+
+
+            //var res = CustomAlgorithms.OrderBy(intList, (x, y) => x % 2 == 0);
 
             #endregion
         }
