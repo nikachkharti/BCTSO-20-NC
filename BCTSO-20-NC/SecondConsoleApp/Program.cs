@@ -1,4 +1,5 @@
 ﻿using Homeworks;
+using SecondConsoleApp.Events;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
@@ -232,7 +233,7 @@ namespace SecondConsoleApp
             //Extension method      //LINQ Query
 
 
-            var data = File.ReadAllLines(@"C:\Users\User\Desktop\IT STEP\BCTSO-20-NC\BCTSO-20-NC\HomeworksIncludeFunctions\vehicles.csv");
+            //var data = File.ReadAllLines(@"C:\Users\User\Desktop\IT STEP\BCTSO-20-NC\BCTSO-20-NC\HomeworksIncludeFunctions\vehicles.csv");
 
             //var result = data
             //    .Skip(1)
@@ -278,9 +279,24 @@ namespace SecondConsoleApp
             //}
 
 
+            //Sensor sensor = new();
+            //sensor.TemperatureLimitReached += Sensor_TemperatureFuncttion;
+
+
+            //for (int i = 0; i < 10; i++)
+            //{
+            //    sensor.SimulateTemperatureChange();
+            //}
+
+            //private static void Sensor_TemperatureFuncttion(object sender, TemperatureEventArgs args)
+            //{
+            //    throw new Exception("GVISHVELET");
+            //}
             #endregion
 
         }
+
+
 
     }
 }
