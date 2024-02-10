@@ -5,10 +5,10 @@ using System.Diagnostics.CodeAnalysis;
 using System.Net.Http.Headers;
 using System.Runtime.InteropServices;
 using System.Security.AccessControl;
+using System.Threading.Tasks.Dataflow;
 
 namespace SecondConsoleApp
 {
-
     internal class Program
     {
         static void Main(string[] args)
@@ -225,6 +225,61 @@ namespace SecondConsoleApp
             //var res = CustomAlgorithms.OrderBy(intList, (x, y) => x % 2 == 0);
 
             #endregion
+
+
+            #region 16 LINQ Events
+
+            //Extension method      //LINQ Query
+
+
+            var data = File.ReadAllLines(@"C:\Users\User\Desktop\IT STEP\BCTSO-20-NC\BCTSO-20-NC\HomeworksIncludeFunctions\vehicles.csv");
+
+            //var result = data
+            //    .Skip(1)
+            //    .Select(Vehicle.Parse)
+            //    .OrderByDescending(x => x.Combined)
+            //    .Take(10);
+
+
+
+            //var result = (from item in data.Skip(1)
+            //              let vehicles = Vehicle.Parse(item)
+            //              orderby vehicles.Combined descending
+            //              select vehicles).Take(10);
+
+
+
+
+            //IEnumerable<IGrouping<string, Vehicle>> groups = data
+            //    .Skip(1)
+            //    .Select(Vehicle.Parse)
+            //    .OrderByDescending(x => x.Combined)
+            //    .GroupBy(x => x.Make);
+
+
+
+            //IEnumerable<IGrouping<string, Vehicle>> groups = from item in data.Skip(1)
+            //                                                 let vehicles = Vehicle.Parse(item)
+            //                                                 orderby vehicles.Combined descending
+            //                                                 group vehicles by vehicles.Make into groupedCars
+            //                                                 orderby groupedCars.Count() descending
+            //                                                 select groupedCars;
+
+
+
+            //foreach (var group in groups)
+            //{
+            //    Console.WriteLine($"{group.Key} --- {group.Count()}");
+
+            //    foreach (var vehicle in group)
+            //        Console.WriteLine($"{vehicle.Make} {vehicle.Model}");
+
+            //    Console.WriteLine("-------------------------------");
+            //}
+
+
+            #endregion
+
         }
 
     }
