@@ -40,6 +40,10 @@ namespace BankApp.Repository
             return result;
         }
 
+        public void AddNewCustomer(Customer model)
+        {
+            throw new NotImplementedException();
+        }
 
         public List<Customer> GetAllCustomers()
         {
@@ -56,6 +60,11 @@ namespace BankApp.Repository
             }
 
             return result;
+        }
+
+        public void Save(string input)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -21,6 +21,20 @@ namespace BankApp.Repository
             return result;
         }
 
+
+        private static string ToJson(Customer input)
+        {
+            string result = JsonSerializer.Serialize(input);
+            return result;
+        }
+
+        public void AddNewCustomer(Customer model)
+        {
+            model.Id = _data.Max(x => x.Id) + 1;
+            var result = ToJson(model);
+            Save(result);
+        }
+
         public List<Customer> GetAllCustomers()
         {
             return _data;
@@ -36,6 +50,19 @@ namespace BankApp.Repository
             }
 
             return result;
+        }
+
+        public void Save(string input)
+        {
+            if (!input.StartsWith("{") || !input.EndsWith("}"))
+                throw new FormatException("Invalid json format");
+
+            string existingJson = File.ReadAllText(_fileLocation);
+
+            existingJson = existingJson.TrimEnd(']');
+            input = $",{input}";
+
+            File.WriteAllText(_fileLocation, $"{existingJson}{input}]");
         }
     }
 }

@@ -47,5 +47,31 @@ namespace BankApp
                 MessageBox.Show(ex.Message, "დაფიქსირდა შეცდომა");
             }
         }
+
+        private void addBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var newCustomer = GetObject();
+                _repository.AddNewCustomer(newCustomer);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "დაფიქსირდა შეცდომა");
+            }
+
+        }
+
+
+        private Customer GetObject()
+        {
+            Customer result = new();
+            result.Name = nameValue.Text;
+            result.IdentityNumber = identityNumberValue.Text;
+            result.Email = emailValue.Text;
+            result.Type = int.Parse(typeValue.Text);
+
+            return result;
+        }
     }
 }

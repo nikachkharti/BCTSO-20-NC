@@ -40,6 +40,8 @@
             emailLabel = new Label();
             typeValue = new TextBox();
             typeLabel = new Label();
+            addBtn = new Button();
+            clearBtn = new Button();
             SuspendLayout();
             // 
             // headerLabel
@@ -144,11 +146,32 @@
             typeLabel.TabIndex = 3;
             typeLabel.Text = "ანგარიშის ტიპი";
             // 
+            // addBtn
+            // 
+            addBtn.Location = new Point(632, 411);
+            addBtn.Name = "addBtn";
+            addBtn.Size = new Size(112, 34);
+            addBtn.TabIndex = 4;
+            addBtn.Text = "დამატება";
+            addBtn.UseVisualStyleBackColor = true;
+            addBtn.Click += addBtn_Click;
+            // 
+            // clearBtn
+            // 
+            clearBtn.Location = new Point(912, 462);
+            clearBtn.Name = "clearBtn";
+            clearBtn.Size = new Size(190, 34);
+            clearBtn.TabIndex = 4;
+            clearBtn.Text = "გასუფთავება";
+            clearBtn.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1114, 781);
+            Controls.Add(clearBtn);
+            Controls.Add(addBtn);
             Controls.Add(typeLabel);
             Controls.Add(emailLabel);
             Controls.Add(phoneNumberLabel);
@@ -183,5 +206,7 @@
         private Label emailLabel;
         private TextBox typeValue;
         private Label typeLabel;
+        private Button addBtn;
+        private Button clearBtn;
     }
 }
