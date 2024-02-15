@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SecondConsoleApp", "SecondC
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomAlgorithm.Tests", "CustomAlgorithm.Tests\CustomAlgorithm.Tests.csproj", "{3D60E1C0-D626-4BF2-8E59-4AA3F4C1758C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankDesktopApplication", "BankDesktopApplication\BankDesktopApplication.csproj", "{268AEB26-586A-4E87-8F23-24AAE34CA8EC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankApp", "BankApp\BankApp.csproj", "{D17CA60F-D12B-4C6F-8FA7-0ACF18188F54}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +35,10 @@ Global
 		{3D60E1C0-D626-4BF2-8E59-4AA3F4C1758C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3D60E1C0-D626-4BF2-8E59-4AA3F4C1758C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3D60E1C0-D626-4BF2-8E59-4AA3F4C1758C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{268AEB26-586A-4E87-8F23-24AAE34CA8EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{268AEB26-586A-4E87-8F23-24AAE34CA8EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{268AEB26-586A-4E87-8F23-24AAE34CA8EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{268AEB26-586A-4E87-8F23-24AAE34CA8EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D17CA60F-D12B-4C6F-8FA7-0ACF18188F54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D17CA60F-D12B-4C6F-8FA7-0ACF18188F54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D17CA60F-D12B-4C6F-8FA7-0ACF18188F54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D17CA60F-D12B-4C6F-8FA7-0ACF18188F54}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
