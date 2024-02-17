@@ -32,14 +32,27 @@ namespace BankApp.Repository
             result.IdentityNumber = separatedData[2];
             result.PhoneNumber = separatedData[3];
             result.Email = separatedData[4];
-            result.Type = int.Parse(separatedData[5]);
+            result.Type = Enum.Parse<Models.Type>(separatedData[5]);
 
             return result;
         }
 
+
+        private static string ToCsv(Customer model)
+        {
+            return $"{model.Id},{model.Name},{model.IdentityNumber},{model.PhoneNumber},{model.Email},{model.Type}";
+        }
+
         public void AddNewCustomer(Customer model)
         {
-            throw new NotImplementedException();
+            if (model is null)
+            {
+                throw new ArgumentNullException(nameof(model));
+            }
+
+            model.Id = _data.Max(x => x.Id) + 1;
+            string result = ToCsv(model);
+            Save(result);
         }
 
         public List<Customer> GetAllCustomers()
@@ -61,7 +74,10 @@ namespace BankApp.Repository
 
         public void Save(string input)
         {
-            throw new NotImplementedException();
+            using (StreamWriter writer = new(_fileLocation, append: true))
+            {
+                writer.WriteLine($"\n{input}");
+            }
         }
     }
 }

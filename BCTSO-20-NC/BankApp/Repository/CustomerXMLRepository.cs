@@ -1,6 +1,7 @@
 ﻿using BankApp.Models;
 using BankApp.Repository.Interfaces;
 using System.Xml;
+using Type = BankApp.Models.Type;
 
 namespace BankApp.Repository
 {
@@ -32,7 +33,7 @@ namespace BankApp.Repository
                 newCustomer.IdentityNumber = node.SelectSingleNode("IdentityNumber").InnerText;
                 newCustomer.PhoneNumber = node.SelectSingleNode("PhoneNumber").InnerText;
                 newCustomer.Email = node.SelectSingleNode("Email").InnerText;
-                newCustomer.Type = int.Parse(node.SelectSingleNode("Type").InnerText);
+                newCustomer.Type = Enum.Parse<Type>(node.SelectSingleNode("Type").InnerText);
 
                 result.Add(newCustomer);
             }

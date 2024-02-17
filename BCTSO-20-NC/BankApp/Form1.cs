@@ -1,6 +1,7 @@
 ﻿using BankApp.Models;
 using BankApp.Repository;
 using BankApp.Repository.Interfaces;
+using Type = BankApp.Models.Type;
 
 namespace BankApp
 {
@@ -54,6 +55,9 @@ namespace BankApp
             {
                 var newCustomer = GetObject();
                 _repository.AddNewCustomer(newCustomer);
+
+                var result = _repository.GetAllCustomers();
+                dataList.DataSource = result;
             }
             catch (Exception ex)
             {
@@ -68,8 +72,9 @@ namespace BankApp
             Customer result = new();
             result.Name = nameValue.Text;
             result.IdentityNumber = identityNumberValue.Text;
+            result.PhoneNumber = phoneValue.Text;
             result.Email = emailValue.Text;
-            result.Type = int.Parse(typeValue.Text);
+            result.Type = Enum.Parse<Type>(typeValue.Text);
 
             return result;
         }

@@ -12,7 +12,20 @@ namespace BankApp.Repository
 
         public CustomerJSONRepository()
         {
-            _data = Parse(File.ReadAllText(_fileLocation));
+            //_data = Parse(File.ReadAllText(_fileLocation));
+
+            using (StreamReader reader = new(_fileLocation))
+            {
+                string line = string.Empty;
+                string x = string.Empty;
+                while ((line = reader.ReadLine()) != null)
+                {
+                    //_data = Parse(line);
+                    x += line;
+                }
+                _data = Parse(x);
+            }
+
         }
 
         private static List<Customer> Parse(string input)

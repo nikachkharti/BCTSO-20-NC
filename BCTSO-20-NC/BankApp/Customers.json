@@ -78,5 +78,13 @@
     "PhoneNumber": "557899886",
     "Email": "info@itstep.ge",
     "Type": 1
+  },
+  {
+    "Id": 11,
+    "Name": "Iakob Qobalia",
+    "IdentityNumber": "31024852345",
+    "PhoneNumber": "555337681",
+    "Email": "Iakob.Qobalia@gmail.com",
+    "Type": 0
   }
 ]

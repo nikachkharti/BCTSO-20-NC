@@ -38,10 +38,10 @@
             phoneNumberLabel = new Label();
             emailValue = new TextBox();
             emailLabel = new Label();
-            typeValue = new TextBox();
             typeLabel = new Label();
             addBtn = new Button();
             clearBtn = new Button();
+            typeValue = new ComboBox();
             SuspendLayout();
             // 
             // headerLabel
@@ -130,13 +130,6 @@
             emailLabel.TabIndex = 3;
             emailLabel.Text = "ელ-ფოსტა";
             // 
-            // typeValue
-            // 
-            typeValue.Location = new Point(12, 414);
-            typeValue.Name = "typeValue";
-            typeValue.Size = new Size(304, 31);
-            typeValue.TabIndex = 2;
-            // 
             // typeLabel
             // 
             typeLabel.AutoSize = true;
@@ -165,17 +158,26 @@
             clearBtn.Text = "გასუფთავება";
             clearBtn.UseVisualStyleBackColor = true;
             // 
+            // typeValue
+            // 
+            typeValue.FormattingEnabled = true;
+            typeValue.Items.AddRange(new object[] { "Phyisical", "Legal" });
+            typeValue.Location = new Point(12, 412);
+            typeValue.Name = "typeValue";
+            typeValue.Size = new Size(304, 33);
+            typeValue.TabIndex = 5;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1114, 781);
+            Controls.Add(typeValue);
             Controls.Add(clearBtn);
             Controls.Add(addBtn);
             Controls.Add(typeLabel);
             Controls.Add(emailLabel);
             Controls.Add(phoneNumberLabel);
-            Controls.Add(typeValue);
             Controls.Add(identityNumberLabel);
             Controls.Add(emailValue);
             Controls.Add(nameLabel);
@@ -204,9 +206,9 @@
         private Label phoneNumberLabel;
         private TextBox emailValue;
         private Label emailLabel;
-        private TextBox typeValue;
         private Label typeLabel;
         private Button addBtn;
         private Button clearBtn;
+        private ComboBox typeValue;
     }
 }
