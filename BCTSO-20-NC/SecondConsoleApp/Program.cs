@@ -338,31 +338,34 @@ namespace SecondConsoleApp
 
 
 
-            Student newStudent = new()
-            {
-                FirsName = "Nika",
-                StartClasses = DateTime.Now.AddDays(1),
-                EndClasses = DateTime.Now
-            };
+            //Student newStudent = new()
+            //{
+            //    FirsName = "Nika",
+            //    StartClasses = DateTime.Now.AddDays(1),
+            //    EndClasses = DateTime.Now
+            //};
 
-            List<ValidationResult> validationResults = new();
-            ValidationContext validationContext = new(newStudent);
+            //List<ValidationResult> validationResults = new();
+            //ValidationContext validationContext = new(newStudent);
 
-            if (!Validator.TryValidateObject(newStudent, validationContext, validationResults, true))
-            {
-                foreach (var validationResult in validationResults)
-                {
-                    Console.WriteLine(validationResult.ErrorMessage);
-                }
-            }
-            else
-            {
-                Console.WriteLine("OK");
-            }
+            //if (!Validator.TryValidateObject(newStudent, validationContext, validationResults, true))
+            //{
+            //    foreach (var validationResult in validationResults)
+            //    {
+            //        Console.WriteLine(validationResult.ErrorMessage);
+            //    }
+            //}
+            //else
+            //{
+            //    Console.WriteLine("OK");
+            //}
+
+
+
+            //DtoGenerator.GenerateDto(typeof(Student), "C:\\Users\\User\\Desktop\\IT STEP\\BCTSO-20-NC\\BCTSO-20-NC\\SecondConsoleApp\\Dtos\\");
 
 
             #endregion
-
 
         }
 
