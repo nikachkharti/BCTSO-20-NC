@@ -2,8 +2,10 @@
 using SecondConsoleApp.Events;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
 using System.Net.Http.Headers;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Security.AccessControl;
 using System.Threading.Tasks.Dataflow;
@@ -293,6 +295,74 @@ namespace SecondConsoleApp
             //    throw new Exception("GVISHVELET");
             //}
             #endregion
+
+
+
+            #region 17 Attributes Reflection
+
+
+            //CIL --- Common Intemadiate Language
+            //  |
+            //  |
+            //  |  IL Code Assembley დავაბრუნო უკან
+            //  |
+            //  |
+            //CLR --- Common Language Runtime (JIT - Just In Time)
+            //  |
+            //  |
+            //  |
+            //  |
+            //  |
+            //Assembler
+            //  |
+            //  |
+            //  |
+            //  |
+            //Native Code (01011101)
+
+
+
+            //Student s1 = new();
+            //Type studentDataType = s1.GetType();
+
+            //MethodInfo[] result = studentDataType.GetMethods();
+            //PropertyInfo[] result = studentDataType.GetProperties();
+            //ConstructorInfo[] result = studentDataType.GetConstructors();
+            //var result = studentDataType.GetInterfaces();
+
+
+            //foreach (var item in result)
+            //{
+            //    Console.WriteLine(item);
+            //}
+
+
+
+            Student newStudent = new()
+            {
+                FirsName = "Nika",
+                StartClasses = DateTime.Now.AddDays(1),
+                EndClasses = DateTime.Now
+            };
+
+            List<ValidationResult> validationResults = new();
+            ValidationContext validationContext = new(newStudent);
+
+            if (!Validator.TryValidateObject(newStudent, validationContext, validationResults, true))
+            {
+                foreach (var validationResult in validationResults)
+                {
+                    Console.WriteLine(validationResult.ErrorMessage);
+                }
+            }
+            else
+            {
+                Console.WriteLine("OK");
+            }
+
+
+            #endregion
+
 
         }
 

@@ -188,7 +188,7 @@
             Controls.Add(headerLabel);
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Form1";
+            Text = "ნიკას ფორმა";
             Load += Form1_Load;
             ResumeLayout(false);
             PerformLayout();
