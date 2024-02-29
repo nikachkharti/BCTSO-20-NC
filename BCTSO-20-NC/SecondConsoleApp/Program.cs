@@ -367,6 +367,30 @@ namespace SecondConsoleApp
 
             #endregion
 
+
+            //Console.WriteLine("MAIN STARTS");
+
+            //Task task1 = Task.Run(() =>
+            //{
+            //    Console.WriteLine("TASK1 STARTS");
+            //    Thread.Sleep(1000);
+            //    Console.WriteLine("TASK1 ENDS");
+            //});
+            //await task1;
+
+
+            //Task task2 = Task.Run(() =>
+            //{
+            //    Console.WriteLine("TASK2 STARTS");
+            //    Thread.Sleep(300);
+            //    Console.WriteLine("TASK2 ENDS");
+            //});
+            //await task2;
+
+
+
+
+            //Console.WriteLine("MAIN ENDS");
         }
 
 
