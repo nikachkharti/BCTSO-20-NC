@@ -9,9 +9,12 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Security.AccessControl;
 using System.Threading.Tasks.Dataflow;
+using static System.Formats.Asn1.AsnWriter;
 
 namespace SecondConsoleApp
 {
+
+
     internal class Program
     {
         static void Main(string[] args)
@@ -368,30 +371,225 @@ namespace SecondConsoleApp
             #endregion
 
 
-            //Console.WriteLine("MAIN STARTS");
 
-            //Task task1 = Task.Run(() =>
+
+            #region ობიექტზე ორიენტირებული პროგრამირება OOP
+
+            #region მემკვიდრეობა --- Inheritence
+            //class Person
+            //    {
+            //        public string FirsName { get; set; }
+            //        public string LastName { get; set; }
+            //        public int Age { get; set; }
+            //    }
+
+            //    class Student : Person
+            //    {
+            //        public double Score { get; set; }
+            //    }
+
+
+            #endregion
+
+            #region აბსტრაქცია -- Abstraction
+
+            //interface IPerson
+            //    {
+            //        void Walk();
+            //    }
+
+            //    abstract class Person
+            //    {
+            //        public string FirsName { get; set; }
+            //        public string LastName { get; set; }
+            //        public int Age { get; set; }
+
+            //        public abstract void Talk();
+            //    }
+
+            //    class Student : Person, IPerson
+            //    {
+            //        public double Score { get; set; }
+
+            //        public override void Talk()
+            //        {
+            //            Console.WriteLine($"My name is {FirsName} {LastName} age is {Age} Score is {Score}");
+            //        }
+
+            //        public void Walk()
+            //        {
+            //            Console.WriteLine("WALKING");
+            //        }
+            //    }
+
+
+            #endregion
+
+
+            #region პოლიმორფიზმი -- Polymorphyism
+
+            //class Person
+            //    {
+            //        public string FirsName { get; set; }
+            //        public string LastName { get; set; }
+            //        public int Age { get; set; }
+
+            //        public virtual void Talk()
+            //        {
+            //            Console.WriteLine($"My name is {FirsName} {LastName} age is {Age}");
+            //        }
+            //    }
+
+            //    class Student : Person
+            //    {
+            //        public double Score { get; set; }
+
+            //        public override void Talk()
+            //        {
+            //            Console.WriteLine($"My name is {FirsName} {LastName} age is {Age} score is {Score}");
+            //        }
+            //    }
+
+            //    class Teacher : Person
+            //    {
+            //        public string Subject { get; set; }
+
+            //        public override void Talk()
+            //        {
+            //            Console.WriteLine($"My name is {FirsName} {LastName} age is {Age} subject is {Subject}");
+            //        }
+            //    }
+
+
+            //ILAPARAKE_BICHO(new Teacher() { FirsName = "Levani", LastName = "Giorgadze", Age = 22, Subject = "C#" });
+
+            //static void ILAPARAKE_BICHO(Person person)
             //{
-            //    Console.WriteLine("TASK1 STARTS");
-            //    Thread.Sleep(1000);
-            //    Console.WriteLine("TASK1 ENDS");
-            //});
-            //await task1;
+            //    person.Talk();
+            //}
+
+            #endregion
 
 
-            //Task task2 = Task.Run(() =>
+            #region ენკაფსულაცია -- Encapsulation
+
+
+            //class Person
+            //    {
+            //        public int Age { get; }
+
+            //        public Person(DateTime birthDate)
+            //        {
+            //            Age = DateTime.Now.Year - birthDate.Year;
+            //        }
+            //    }
+
+
+            #endregion
+
+
+
+
+            #endregion
+
+
+            //DRY --- Dont Repeat Yourself
+
+            #region KISS --- Keep It Simple Stupid
+
+            //int age = 10;
+
+            #endregion
+
+
+            #region SOLID
+            //1.Single Responsibility Principle --- 
+
+            #region ნებისმიერი კოდი აუცილებლად უნდა ასრულებდეს ერთ საქმეს
+
+            //static int Sum(int x, int y)
             //{
-            //    Console.WriteLine("TASK2 STARTS");
-            //    Thread.Sleep(300);
-            //    Console.WriteLine("TASK2 ENDS");
-            //});
-            //await task2;
+            //    int result = x + y;
+            //    return result;
+            //}
+
+            #endregion
+
+
+            //2.Open Closed Principle ---
+
+
+            #region კოდი ღია უნდა იყოს განვრცობისთვის, მაგრად დახურული უნდა იყოს მოდიფიკაციისთვის.
+
+            //CustomAlgorithms Project იხილეთ
+
+            #endregion
+
+            //3.Liskov Subtitional Priniciple --- 
+
+            #region მშობელი ობიექტები უნდა იყვნენც ჩანაცვლებადი შვილი კლასების მიერ ისე რომ ამან არაფერი უკუშედეგი არ გამოიწვიოს.
 
 
 
+            #endregion
 
-            //Console.WriteLine("MAIN ENDS");
+            //4.Interface Segeragion Principle ---
+
+
+            #region კლასი არ უნდა ვაიძულოთ რომ მოახდინოს იმ ინტერფეისის იმპლემენტაცია რომელიც არ სჭირდება
+            //interface ISleeper
+            //    {
+            //        void Sleep();
+
+            //    }
+
+            //    interface IEater
+            //    {
+            //        void Eat();
+            //    }
+
+            //    interface IWorker
+            //    {
+            //        void Work();
+            //    }
+
+            //    class Worker : IWorker, IEater, ISleeper
+            //    {
+            //        public void Eat()
+            //        {
+            //            throw new NotImplementedException();
+            //        }
+
+            //        public void Sleep()
+            //        {
+            //            throw new NotImplementedException();
+            //        }
+
+            //        public void Work()
+            //        {
+            //            throw new NotImplementedException();
+            //        }
+            //    }
+            #endregion
+
+
+            //5.Dependency Inversion Principle --- 
+
+            #region მაღალი დონის ტიპები (მშობლები) არ უნდა იყვნენ დამოკიდებული დაბალი ლეველის ტიპებზე (წარმოებულ ტიპებზე), ორივენი დამოკიდებული უნდა იყვნენ ზოგად ტიპებზე
+
+            //Generic Repository
+            //იხილეთ ბანკის აპლიკაცია
+
+            #endregion
+
+
+
+            #endregion
+
+
         }
+
+
 
 
 
