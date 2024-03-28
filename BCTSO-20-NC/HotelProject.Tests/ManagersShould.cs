@@ -13,21 +13,42 @@ namespace HotelProject.Tests
 
 
         [Fact]
-        public void GetManagers()
+        public async void GetManagers()
         {
-            var result = _managerRepository.GetManagers();
+            var result = await _managerRepository.GetManagers();
         }
 
         [Fact]
-        public void AddNewManager()
+        public async void AddNewManager()
         {
             Manager newManager = new()
             {
-                FirstName = "Test",
-                LastName = "Test"
+                FirstName = "ალექსანდრე",
+                LastName = "ამოევი",
+                HotelId = 3
             };
 
-            _managerRepository.AddManager(newManager);
+            await _managerRepository.AddManager(newManager);
+        }
+
+        [Fact]
+        public async void UpdateManager()
+        {
+            Manager newManager = new()
+            {
+                Id = 1,
+                FirstName = "გიორგი",
+                LastName = "გიორგაძე",
+                HotelId = 1,
+            };
+
+            await _managerRepository.UpdateManager(newManager);
+        }
+
+        [Fact]
+        public async void DeleteManager()
+        {
+            await _managerRepository.DeleteManager(4);
         }
     }
 }

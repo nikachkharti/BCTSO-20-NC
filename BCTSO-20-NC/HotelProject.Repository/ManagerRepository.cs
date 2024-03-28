@@ -6,7 +6,7 @@ namespace HotelProject.Repository
 {
     public class ManagerRepository
     {
-        public List<Manager> GetManagers()
+        public async Task<List<Manager>> GetManagers()
         {
             List<Manager> result = new();
             const string sqlExpression = "SELECT*FROM Managers";
@@ -17,10 +17,10 @@ namespace HotelProject.Repository
                 {
                     SqlCommand command = new(sqlExpression, connection);
 
-                    connection.Open();
+                    await connection.OpenAsync();
 
-                    SqlDataReader reader = command.ExecuteReader();
-                    while (reader.Read())
+                    SqlDataReader reader = await command.ExecuteReaderAsync();
+                    while (await reader.ReadAsync())
                     {
                         if (reader.HasRows)
                         {
@@ -28,7 +28,8 @@ namespace HotelProject.Repository
                             {
                                 Id = reader.GetInt32(0),
                                 FirstName = !reader.IsDBNull(1) ? reader.GetString(1) : string.Empty,
-                                LastName = !reader.IsDBNull(2) ? reader.GetString(2) : string.Empty
+                                LastName = !reader.IsDBNull(2) ? reader.GetString(2) : string.Empty,
+                                HotelId = !reader.IsDBNull(3) ? reader.GetInt32(3) : 0
                             });
                         }
                     }
@@ -40,24 +41,23 @@ namespace HotelProject.Repository
                 }
                 finally
                 {
-                    connection.Close();
+                    await connection.CloseAsync();
                 }
             }
 
             return result;
         }
-
-        public void AddManager(Manager manager)
+        public async Task AddManager(Manager manager)
         {
-            string sqlExpression = @$"INSERT INTO Managers(FirstName,LastName)VALUES(N'{manager.FirstName}',N'{manager.LastName}')";
+            string sqlExpression = @$"INSERT INTO Managers(FirstName,LastName,HotelId)VALUES(N'{manager.FirstName}',N'{manager.LastName}',N'{manager.HotelId}')";
 
             using (SqlConnection connection = new(ApplicationDbContext.ConnectionString))
             {
                 try
                 {
                     SqlCommand command = new(sqlExpression, connection);
-                    connection.Open();
-                    command.ExecuteNonQuery();
+                    await connection.OpenAsync();
+                    await command.ExecuteNonQueryAsync();
                 }
                 catch (Exception)
                 {
@@ -65,20 +65,58 @@ namespace HotelProject.Repository
                 }
                 finally
                 {
-                    connection.Close();
+                    await connection.CloseAsync();
                 }
             }
         }
+        public async Task UpdateManager(Manager manager)
+        {
+            string sqlExpression = @$"UPDATE Managers
+                                    SET
+	                                    FirstName = N'{manager.FirstName}',
+	                                    LastName = N'{manager.LastName}',
+	                                    HotelId = {manager.HotelId}
+                                    WHERE Id = {manager.Id}";
 
-        //TODO: დაწერეთ მენეჯერის update - ის და მენერჯერის delete - ის ფუნციონალი
+            using (SqlConnection connection = new(ApplicationDbContext.ConnectionString))
+            {
+                try
+                {
+                    SqlCommand command = new(sqlExpression, connection);
+                    await connection.OpenAsync();
+                    await command.ExecuteNonQueryAsync();
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+                finally
+                {
+                    await connection.CloseAsync();
+                }
+            }
+        }
+        public async Task DeleteManager(int id)
+        {
+            string sqlExpression = @$"DELETE Managers WHERE Id = {id}";
 
-        //TODO: შექმენით სასტუმროს ცხრილი sql - ში შემდეგი პარამეტრებით
-        //Id INT PK IDENTITY
-        //დასახელება NVARCHAR
-        //Rating FLOAT
-        //Country NVARCHAR
-        //City NVARCHAR
-        //PhysicalAddress NVARCHAR
-
+            using (SqlConnection connection = new(ApplicationDbContext.ConnectionString))
+            {
+                try
+                {
+                    SqlCommand command = new(sqlExpression, connection);
+                    await connection.OpenAsync();
+                    await command.ExecuteNonQueryAsync();
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+                finally
+                {
+                    await connection.CloseAsync();
+                }
+            }
+        }
     }
 }
