@@ -30,6 +30,21 @@ VALUES
 (N'გიორგი',N'გუჯარელიძე',3)
 
 
+
+--CREATE PROCEDURE sp_GetAllHotels
+--AS
+--BEGIN
+--	SELECT
+--		Id,
+--		[Name],
+--		Rating,
+--		Country,
+--		City,
+--		PhyisicalAddress
+--	FROM Hotels
+--END
+
+
 --CREATE PROCEDURE sp_AddHotel
 --@name NVARCHAR(50),
 --@rating FLOAT,
