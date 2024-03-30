@@ -19,6 +19,12 @@ namespace HotelProject.Tests
         }
 
         [Fact]
+        public async void Get_Single_Hotel()
+        {
+            var result = await _hotelRepository.GetSingleHotel(1);
+        }
+
+        [Fact]
         public async void Add_New_Hotel_In_Database()
         {
             Hotel newHotel = new()

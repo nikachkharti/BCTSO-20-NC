@@ -85,3 +85,69 @@ VALUES
 --BEGIN
 --	DELETE FROM Hotels WHERE Id = @hotelId
 --END
+
+
+--ALTER TABLE Hotels
+--ADD CONSTRAINT CK_ValidRating
+--CHECK(Rating >= 1.0 AND Rating <= 10.0)
+
+
+--CREATE PROCEDURE sp_addManager
+--	@firstName NVARCHAR(50),
+--	@lastName NVARCHAR(50),
+--	@hotelId INT
+--AS
+--BEGIN
+--	INSERT INTO Managers(FirstName,LastName,HotelId)
+--	VALUES(@firstName,@lastName,@hotelId)
+--END
+
+
+
+
+
+--CREATE PROCEDURE sp_addManager
+--	@firstName NVARCHAR(50),
+--	@lastName NVARCHAR(50),
+--	@hotelId INT
+--AS
+--BEGIN
+--	INSERT INTO Managers(FirstName,LastName,HotelId)
+--	VALUES(@firstName,@lastName,@hotelId)
+--END
+
+
+
+--CREATE PROCEDURE sp_GetAllManagers
+--AS
+--BEGIN
+--	SELECT [Id]
+--		  ,[FirstName]
+--		  ,[LastName]
+--		  ,[HotelId]
+--	FROM [DOITHotel_BCTFO].[dbo].[Managers]	
+--END
+
+
+ --CREATE PROCEDURE sp_UpdateManager
+ --	@firstName NVARCHAR(50),
+	--@lastName NVARCHAR(50),
+	--@hotelId INT,
+	--@id INT
+ --AS
+ --BEGIN
+	--UPDATE Managers
+	--   SET FirstName = @firstName
+	--	  ,LastName = @lastName
+	--	  ,HotelId = @hotelId
+	-- WHERE Id = @id
+ --END
+
+
+
+--CREATE PROCEDURE sp_DeleteManager
+--	@id INT
+-- AS
+-- BEGIN
+--	DELETE Managers WHERE Id = @id
+-- END

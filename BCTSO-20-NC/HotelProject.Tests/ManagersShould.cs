@@ -19,13 +19,19 @@ namespace HotelProject.Tests
         }
 
         [Fact]
+        public async void GetSingleManager()
+        {
+            var result = await _managerRepository.GetSingleManager(1);
+        }
+
+        [Fact]
         public async void AddNewManager()
         {
             Manager newManager = new()
             {
-                FirstName = "ალექსანდრე",
-                LastName = "ამოევი",
-                HotelId = 3
+                FirstName = "ვალერი",
+                LastName = "ზანგური",
+                HotelId = 5
             };
 
             await _managerRepository.AddManager(newManager);
@@ -36,10 +42,10 @@ namespace HotelProject.Tests
         {
             Manager newManager = new()
             {
-                Id = 1,
+                Id = 6,
                 FirstName = "გიორგი",
                 LastName = "გიორგაძე",
-                HotelId = 1,
+                HotelId = 5,
             };
 
             await _managerRepository.UpdateManager(newManager);
@@ -48,7 +54,7 @@ namespace HotelProject.Tests
         [Fact]
         public async void DeleteManager()
         {
-            await _managerRepository.DeleteManager(4);
+            await _managerRepository.DeleteManager(6);
         }
     }
 }
