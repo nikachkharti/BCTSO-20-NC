@@ -1,0 +1,32 @@
+﻿@model Hotel
+@{
+    ViewData["Title"] = "სასტუმროს რედაქტირება";
+}
+<div class="row">
+    <form asp-controller="Hotels" asp-action="UpdatePOST" method="post">
+        <input asp-for="@Model.Id" hidden />
+        <div class="mb-3">
+            <label asp-for="Name" class="form-label">დასახელება</label>
+            <input class="form-control" asp-for="Name" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Rating" class="form-label">რეიტინგი</label>
+            <input class="form-control" asp-for="Rating" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Country" class="form-label">ქვეყანა</label>
+            <input class="form-control" asp-for="Country" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="City" class="form-label">ქალაქი</label>
+            <input class="form-control" asp-for="City" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="PhyisicalAddress" class="form-label">მისამართი</label>
+            <input class="form-control" asp-for="PhyisicalAddress" />
+        </div>
+        <div class="mb-3">
+            <input class="btn btn-warning" type="submit" value="რედაქტირება" />
+        </div>
+    </form>
+</div>
