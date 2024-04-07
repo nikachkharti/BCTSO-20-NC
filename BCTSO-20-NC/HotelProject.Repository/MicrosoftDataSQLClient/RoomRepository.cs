@@ -1,11 +1,12 @@
 ﻿using HotelProject.Data;
 using HotelProject.Models;
+using HotelProject.Repository.Interfaces;
 using Microsoft.Data.SqlClient;
 using System.Data;
 
-namespace HotelProject.Repository
+namespace HotelProject.Repository.MicrosoftDataSQLClient
 {
-    public class RoomRepository
+    public class RoomRepository : IRoomRepository
     {
         public async Task<List<Room>> GetRooms()
         {
@@ -19,7 +20,7 @@ namespace HotelProject.Repository
                     await connection.OpenAsync();
 
                     SqlCommand command = new(sqlExpression, connection);
-                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    command.CommandType = CommandType.StoredProcedure;
 
                     SqlDataReader reader = await command.ExecuteReaderAsync();
 
@@ -64,7 +65,7 @@ namespace HotelProject.Repository
                     await connection.OpenAsync();
 
                     SqlCommand command = new(sqlExpression, connection);
-                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    command.CommandType = CommandType.StoredProcedure;
                     command.Parameters.AddWithValue("hotelId", hotelId);
                     SqlDataReader reader = await command.ExecuteReaderAsync();
 

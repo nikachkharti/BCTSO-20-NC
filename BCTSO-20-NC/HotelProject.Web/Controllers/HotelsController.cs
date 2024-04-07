@@ -1,14 +1,15 @@
 ﻿using HotelProject.Models;
-using HotelProject.Repository;
+using HotelProject.Repository.Interfaces;
+using HotelProject.Repository.MicrosoftDataSQLClient;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HotelProject.Web.Controllers
 {
     public class HotelsController : Controller
     {
-        private readonly HotelRepository _hotelRepository;
+        private readonly IHotelRepository _hotelRepository;
 
-        public HotelsController(HotelRepository hotelsController)
+        public HotelsController(IHotelRepository hotelsController)
         {
             _hotelRepository = hotelsController;
         }

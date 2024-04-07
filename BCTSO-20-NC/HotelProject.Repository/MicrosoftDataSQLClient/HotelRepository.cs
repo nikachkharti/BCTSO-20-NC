@@ -1,11 +1,12 @@
 ﻿using HotelProject.Data;
 using HotelProject.Models;
+using HotelProject.Repository.Interfaces;
 using Microsoft.Data.SqlClient;
 using System.Data;
 
-namespace HotelProject.Repository
+namespace HotelProject.Repository.MicrosoftDataSQLClient
 {
-    public class HotelRepository
+    public class HotelRepository : IHotelRepository
     {
         public async Task<List<Hotel>> GetHotels()
         {
@@ -50,8 +51,6 @@ namespace HotelProject.Repository
 
             return result;
         }
-
-
         public async Task<Hotel> GetSingleHotel(int id)
         {
             Hotel result = new();
@@ -93,8 +92,6 @@ namespace HotelProject.Repository
 
             return result;
         }
-
-
         public async Task AddHotel(Hotel hotel)
         {
             const string sqlExpression = "sp_AddHotel";
@@ -131,7 +128,6 @@ namespace HotelProject.Repository
                 }
             }
         }
-
         public async Task UpdateHotel(Hotel hotel)
         {
             const string sqlExpression = "sp_UpdateHotel";
@@ -169,7 +165,6 @@ namespace HotelProject.Repository
                 }
             }
         }
-
         public async Task DeleteHotel(int id)
         {
             string sqlExpression = @$"sp_DeleteHotel";

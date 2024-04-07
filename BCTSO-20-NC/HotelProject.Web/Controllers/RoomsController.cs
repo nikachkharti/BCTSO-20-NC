@@ -1,14 +1,14 @@
-﻿using HotelProject.Repository;
+﻿using HotelProject.Repository.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HotelProject.Web.Controllers
 {
     public class RoomsController : Controller
     {
-        private readonly RoomRepository _roomRepository;
-        public RoomsController()
+        private readonly IRoomRepository _roomRepository;
+        public RoomsController(IRoomRepository roomRepository)
         {
-            _roomRepository = new();
+            _roomRepository = roomRepository;
         }
 
         public async Task<IActionResult> Index()

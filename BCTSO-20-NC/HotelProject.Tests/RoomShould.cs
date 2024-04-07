@@ -1,5 +1,5 @@
 ﻿using HotelProject.Models;
-using HotelProject.Repository;
+using HotelProject.Repository.MicrosoftDataSQLClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
