@@ -9,5 +9,6 @@ namespace HotelProject.Repository.Interfaces
         Task AddHotel(Hotel hotel);
         Task UpdateHotel(Hotel hotel);
         Task DeleteHotel(int id);
+        Task<List<Hotel>> GetHotelsWithoutManager();
     }
 }

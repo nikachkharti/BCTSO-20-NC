@@ -23,13 +23,12 @@ namespace HotelProject.Web.Controllers
         }
 
 
-        //TODO GetHotelsWithoutManager method.
-        //public async Task<IActionResult> Create()
-        //{
-        //    var hotels = await _hotelRepository.GetHotelsWithoutManager();
-        //    ViewBag.HotelId = new SelectList(hotels, "Id", "Name");
-        //    return View();
-        //}
+        public async Task<IActionResult> Create()
+        {
+            var hotels = await _hotelRepository.GetHotelsWithoutManager();
+            ViewBag.HotelId = new SelectList(hotels, "Id", "Name");
+            return View();
+        }
 
 
         [HttpPost]

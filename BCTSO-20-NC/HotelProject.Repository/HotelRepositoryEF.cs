@@ -20,6 +20,11 @@ namespace HotelProject.Repository
             throw new NotImplementedException();
         }
 
+        public Task<List<Hotel>> GetHotelsWithoutManager()
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<Hotel> GetSingleHotel(int id)
         {
             throw new NotImplementedException();
