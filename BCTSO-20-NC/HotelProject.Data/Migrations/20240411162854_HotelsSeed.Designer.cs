@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HotelProject.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240407121445_HotelFieldsMadeRequired")]
-    partial class HotelFieldsMadeRequired
+    [Migration("20240411162854_HotelsSeed")]
+    partial class HotelsSeed
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -58,6 +58,35 @@ namespace HotelProject.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Hotels");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            City = "თბილისი",
+                            Country = "საქართველო",
+                            Name = "პირველი სასტუმრო",
+                            PhyisicalAddress = "რუსთაველის 4",
+                            Rating = 10.0
+                        },
+                        new
+                        {
+                            Id = 2,
+                            City = "თბილისი",
+                            Country = "საქართველო",
+                            Name = "მეორე სასტუმრო",
+                            PhyisicalAddress = "პეკინის 13",
+                            Rating = 8.0
+                        },
+                        new
+                        {
+                            Id = 3,
+                            City = "თბილისი",
+                            Country = "საქართველო",
+                            Name = "მესამე სასტუმრო",
+                            PhyisicalAddress = "გამსახურდიას 12",
+                            Rating = 7.7000000000000002
+                        });
                 });
 #pragma warning restore 612, 618
         }

@@ -5,27 +5,35 @@ namespace HotelProject.Models
 {
     public class Hotel
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        //[Key]
+        //[Required]
+        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        [Required]
-        [MaxLength(50)]
+        //[Required]
+        //[MaxLength(50)]
+        //[Column(TypeName = "VARCHAR")]
         public string Name { get; set; }
 
-        [Required]
+        //[Required]
         public double Rating { get; set; }
 
-        [Required]
-        [MaxLength(50)]
+        //[Required]
+        //[MaxLength(50)]
         public string Country { get; set; }
 
-        [Required]
-        [MaxLength(50)]
+        //[Required]
+        //[MaxLength(50)]
         public string City { get; set; }
 
-        [Required]
-        [MaxLength(50)]
+        //[Required]
+        //[MaxLength(50)]
         public string PhyisicalAddress { get; set; }
+
+        //1x1
+        public Manager Manager { get; set; }
+
+        //1xM
+        public ICollection<Room> Rooms { get; set; }
     }
 }
