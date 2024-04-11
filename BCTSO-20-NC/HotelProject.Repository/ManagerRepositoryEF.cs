@@ -1,33 +1,82 @@
-﻿using HotelProject.Models;
+﻿using HotelProject.Data;
+using HotelProject.Models;
 using HotelProject.Repository.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace HotelProject.Repository
 {
     public class ManagerRepositoryEF : IManagerRepository
     {
-        public Task AddManager(Manager manager)
+        private readonly ApplicationDbContext _context;
+        public ManagerRepositoryEF(ApplicationDbContext context)
         {
-            throw new NotImplementedException();
+            _context = context;
         }
 
-        public Task DeleteManager(int id)
+        public async Task AddManager(Manager manager)
         {
-            throw new NotImplementedException();
+            if (manager is null)
+            {
+                throw new ArgumentNullException("Invalid argument passed");
+            }
+
+            await _context.Managers.AddAsync(manager);
+            await _context.SaveChangesAsync();
         }
 
-        public Task<List<Manager>> GetManagers()
+        public async Task DeleteManager(int id)
         {
-            throw new NotImplementedException();
+            if (id <= 0)
+            {
+                throw new ArgumentNullException("Invalid argument passed");
+            }
+
+            var entity = await _context.Managers.FirstAsync(h => h.Id == id);
+
+            _context.Managers.Remove(entity);
+            await _context.SaveChangesAsync();
         }
 
-        public Task<Manager> GetSingleManager(int id)
+        public async Task<List<Manager>> GetManagers()
         {
-            throw new NotImplementedException();
+            var entities = await _context.Managers
+                .Include(nameof(Hotel))
+                .ToListAsync();
+
+            if (entities == null)
+            {
+                throw new NullReferenceException("Entities not  found");
+            }
+
+            return entities;
         }
 
-        public Task UpdateManager(Manager manager)
+        public async Task<Manager> GetSingleManager(int id)
         {
-            throw new NotImplementedException();
+            var entity = await _context.Managers
+                .Include(nameof(Hotel))
+                .FirstAsync(h => h.Id == id);
+            return entity;
+        }
+
+        public async Task UpdateManager(Manager manager)
+        {
+            if (manager.Id <= 0 || manager == null)
+            {
+                throw new ArgumentNullException("Invalid argument passed");
+            }
+
+            var entity = await _context.Managers.FirstAsync(m => m.Id == manager.Id);
+
+            entity.FirstName = manager.FirstName;
+            entity.LastName = manager.LastName;
+            if (manager.HotelId == 0)
+            {
+                manager.HotelId = entity.HotelId;
+            }
+
+            _context.Managers.Update(entity);
+            await _context.SaveChangesAsync();
         }
     }
 }

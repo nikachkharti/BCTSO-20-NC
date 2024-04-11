@@ -1,6 +1,5 @@
 ﻿using HotelProject.Models;
 using HotelProject.Repository.Interfaces;
-using HotelProject.Repository.MicrosoftDataSQLClient;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
@@ -56,6 +55,9 @@ namespace HotelProject.Web.Controllers
         public async Task<IActionResult> Update(int id)
         {
             var result = await _managerRepository.GetSingleManager(id);
+            var hotels = await _hotelRepository.GetHotelsWithoutManager();
+            ViewBag.HotelsWithoutManagers = new SelectList(hotels, "Id", "Name");
+
             return View(result);
         }
 

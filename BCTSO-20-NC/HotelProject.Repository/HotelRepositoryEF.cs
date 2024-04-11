@@ -1,38 +1,86 @@
-﻿using HotelProject.Models;
+﻿using HotelProject.Data;
+using HotelProject.Models;
 using HotelProject.Repository.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace HotelProject.Repository
 {
     public class HotelRepositoryEF : IHotelRepository
     {
-        public Task AddHotel(Hotel hotel)
+        private readonly ApplicationDbContext _context;
+        public HotelRepositoryEF(ApplicationDbContext context)
         {
-            throw new NotImplementedException();
+            _context = context;
         }
 
-        public Task DeleteHotel(int id)
+        public async Task AddHotel(Hotel hotel)
         {
-            throw new NotImplementedException();
+            if (hotel is null)
+            {
+                throw new ArgumentNullException("Invalid argument passed");
+            }
+
+            await _context.Hotels.AddAsync(hotel);
+            await _context.SaveChangesAsync();
         }
 
-        public Task<List<Hotel>> GetHotels()
+        public async Task DeleteHotel(int id)
         {
-            throw new NotImplementedException();
+            if (id <= 0)
+            {
+                throw new ArgumentNullException("Invalid argument passed");
+            }
+
+            var entity = await _context.Hotels.FirstAsync(h => h.Id == id);
+
+            _context.Hotels.Remove(entity);
+            await _context.SaveChangesAsync();
         }
 
-        public Task<List<Hotel>> GetHotelsWithoutManager()
+        public async Task<List<Hotel>> GetHotels()
         {
-            throw new NotImplementedException();
+            var entities = await _context.Hotels.ToListAsync();
+
+            if (entities == null)
+            {
+                throw new NullReferenceException("Entities not  found");
+            }
+
+            return entities;
         }
 
-        public Task<Hotel> GetSingleHotel(int id)
+        public async Task<List<Hotel>> GetHotelsWithoutManager()
         {
-            throw new NotImplementedException();
+            var entities = await _context.Hotels
+                .Where(x => x.Manager == null)
+                .ToListAsync();
+
+            return entities;
         }
 
-        public Task UpdateHotel(Hotel hotel)
+        public async Task<Hotel> GetSingleHotel(int id)
         {
-            throw new NotImplementedException();
+            var entity = await _context.Hotels.FirstAsync(h => h.Id == id);
+            return entity;
+        }
+
+        public async Task UpdateHotel(Hotel hotel)
+        {
+            if (hotel.Id <= 0 || hotel == null)
+            {
+                throw new ArgumentNullException("Invalid argument passed");
+            }
+
+            var entity = await _context.Hotels.FirstAsync(h => h.Id == hotel.Id);
+
+            entity.Name = hotel.Name;
+            entity.Rating = hotel.Rating;
+            entity.Country = hotel.Country;
+            entity.City = hotel.City;
+            entity.PhyisicalAddress = hotel.PhyisicalAddress;
+
+            _context.Hotels.Update(entity);
+            await _context.SaveChangesAsync();
         }
     }
 }

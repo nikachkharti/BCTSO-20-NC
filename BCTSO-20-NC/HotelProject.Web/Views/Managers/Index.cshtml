@@ -1,20 +1,28 @@
 ﻿@model List<Manager>
 <div class="row">
+    <a class="btn btn-success w-25 btn btn-primary" asp-controller="Managers" asp-action="Create">ახალი მენეჯერი</a>
+</div>
+<div class="row">
     <table class="table table-bordered table-striped">
         <thead>
             <tr>
                 <th>სახელი</th>
                 <th>გვარი</th>
                 <th>სასტუმროს Id</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var hotel in Model)
+            @foreach (var manager in Model)
             {
                 <tr>
-                    <td>@hotel.FirstName</td>
-                    <td>@hotel.LastName</td>
-                    <td>@hotel.HotelId</td>
+                    <td>@manager.FirstName</td>
+                    <td>@manager.LastName</td>
+                    <td>@manager.Hotel.Name</td>
+                    <td>
+                        <a class="btn btn-danger" asp-controller="Managers" asp-action="Delete" asp-route-id="@manager.Id">წაშლა</a>
+                        <a class="btn btn-info" asp-controller="Managers" asp-action="Update" asp-route-id="@manager.Id">განახლება</a>
+                    </td>
                 </tr>
             }
         </tbody>
