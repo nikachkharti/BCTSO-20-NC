@@ -180,7 +180,103 @@ namespace HotelProject.Data
 
 
 
+            #region Guests
 
+            modelBuilder.Entity<Guest>().HasData(
+                        new Guest()
+                        {
+                            Id = 1,
+                            FirstName = "Nikoloz",
+                            LastName = "Chkhartishvili",
+                            PersonalNumber = "01024085083",
+                            PhoneNumber = "555337681"
+                        },
+                        new Guest()
+                        {
+                            Id = 2,
+                            FirstName = "Khatia",
+                            LastName = "Burduli",
+                            PersonalNumber = "01024082203",
+                            PhoneNumber = "579057747"
+                        },
+                        new Guest()
+                        {
+                            Id = 3,
+                            FirstName = "Erekle",
+                            LastName = "Davitashvili",
+                            PersonalNumber = "12345678947",
+                            PhoneNumber = "571058998"
+                        },
+                        new Guest()
+                        {
+                            Id = 4,
+                            FirstName = "Dali",
+                            LastName = "Goderdzishvili",
+                            PersonalNumber = "87005633698",
+                            PhoneNumber = "555887469"
+                        }
+                    );
+
+            modelBuilder.Entity<Guest>().HasIndex(x => x.PersonalNumber).IsUnique();
+            modelBuilder.Entity<Guest>().HasIndex(x => x.PhoneNumber).IsUnique();
+
+            #endregion
+
+
+            #region Reservations
+
+            modelBuilder.Entity<Reservation>().HasData(
+                new Reservation()
+                {
+                    Id = 1,
+                    CheckInDate = DateTime.Now,
+                    CheckOutDate = DateTime.Now.AddDays(10)
+                },
+                new Reservation()
+                {
+                    Id = 2,
+                    CheckInDate = DateTime.Now,
+                    CheckOutDate = DateTime.Now.AddMonths(1)
+                },
+                new Reservation()
+                {
+                    Id = 3,
+                    CheckInDate = DateTime.Now,
+                    CheckOutDate = DateTime.Now.AddDays(20)
+                }
+            );
+            #endregion
+
+
+            #region GuestReservations
+
+            modelBuilder.Entity<GuestReservation>().HasData(
+                    new GuestReservation()
+                    {
+                        Id = 1,
+                        GuestId = 1,
+                        ReservationId = 1
+                    },
+                    new GuestReservation()
+                    {
+                        Id = 2,
+                        GuestId = 2,
+                        ReservationId = 1
+                    },
+                    new GuestReservation()
+                    {
+                        Id = 3,
+                        GuestId = 3,
+                        ReservationId = 2
+                    },
+                    new GuestReservation()
+                    {
+                        Id = 4,
+                        GuestId = 4,
+                        ReservationId = 3
+                    }
+                );
+            #endregion
 
 
 
@@ -195,5 +291,8 @@ namespace HotelProject.Data
         public DbSet<Hotel> Hotels { get; set; }
         public DbSet<Manager> Managers { get; set; }
         public DbSet<Room> Rooms { get; set; }
+        public DbSet<Guest> Guests { get; set; }
+        public DbSet<Reservation> Reservations { get; set; }
+        public DbSet<GuestReservation> GuestReservations { get; set; }
     }
 }
