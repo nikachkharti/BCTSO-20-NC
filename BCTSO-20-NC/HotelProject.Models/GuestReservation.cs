@@ -12,7 +12,7 @@ namespace HotelProject.Models
 
         [ForeignKey(nameof(Guest))]
         public int GuestId { get; set; }
-        public Reservation Guest { get; set; }
+        public Guest Guest { get; set; }
 
 
         [ForeignKey(nameof(Reservation))]
