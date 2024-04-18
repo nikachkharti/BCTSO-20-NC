@@ -6,8 +6,8 @@ namespace HotelProject.Repository.Interfaces
     {
         Task<List<GuestReservation>> GetAll();
         Task<GuestReservation> GetById(int id);
-        Task Add(GuestReservation guest);
-        Task Update(GuestReservation guest);
+        Task Add(GuestReservation guestReservation);
+        Task Update(GuestReservation guestReservation);
         Task Delete(int id);
     }
 }

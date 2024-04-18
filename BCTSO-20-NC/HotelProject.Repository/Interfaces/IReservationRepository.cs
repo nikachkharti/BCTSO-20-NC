@@ -7,8 +7,8 @@ namespace HotelProject.Repository.Interfaces
         Task<List<Reservation>> GetAll();
         Task<Reservation> GetById(int id);
         Task<Reservation> GetByCheckInCheckOutDate(DateTime checkinDate, DateTime checkoutDate);
-        Task Add(Reservation guest);
-        Task Update(Reservation guest);
+        Task Add(Reservation reservation);
+        Task Update(Reservation reservation);
         Task Delete(int id);
     }
 }

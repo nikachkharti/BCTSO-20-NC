@@ -1,38 +1,103 @@
-﻿using HotelProject.Models;
+﻿using HotelProject.Data;
+using HotelProject.Data.Migrations;
+using HotelProject.Models;
 using HotelProject.Repository.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace HotelProject.Repository
 {
     public class ReservationRepositoryEF : IReservationRepository
     {
-        public Task Add(Reservation guest)
+        private readonly ApplicationDbContext _context;
+        public ReservationRepositoryEF(ApplicationDbContext context)
         {
-            throw new NotImplementedException();
+            _context = context;
         }
 
-        public Task Delete(int id)
+        public async Task Add(Reservation reservation)
         {
-            throw new NotImplementedException();
+            if (reservation == null)
+            {
+                throw new ArgumentNullException("Invalid argument passed");
+            }
+
+            await _context.Reservations.AddAsync(reservation);
+            await _context.SaveChangesAsync();
         }
 
-        public Task<List<Reservation>> GetAll()
+        public async Task Delete(int id)
         {
-            throw new NotImplementedException();
+            if (id <= 0)
+            {
+                throw new ArgumentNullException("Invalid argument passed");
+            }
+
+            var entity = await _context.Reservations.FirstOrDefaultAsync(x => x.Id == id);
+
+            if (entity == null)
+            {
+                throw new NullReferenceException("Entity not found");
+            }
+
+            _context.Reservations.Remove(entity);
+            await _context.SaveChangesAsync();
         }
 
-        public Task<Reservation> GetByCheckInCheckOutDate(DateTime checkinDate, DateTime checkoutDate)
+        public async Task<List<Reservation>> GetAll()
         {
-            throw new NotImplementedException();
+            var entities = await _context.Reservations.ToListAsync();
+
+            if (entities == null)
+            {
+                throw new NullReferenceException("Entities not found");
+            }
+
+            return entities;
         }
 
-        public Task<Reservation> GetById(int id)
+        public async Task<Reservation> GetByCheckInCheckOutDate(DateTime checkinDate, DateTime checkoutDate)
         {
-            throw new NotImplementedException();
+            var entity = await _context.Reservations.FirstOrDefaultAsync(x => x.CheckInDate == checkinDate && x.CheckOutDate == checkoutDate);
+
+            if (entity == null)
+            {
+                throw new NullReferenceException("Entitiy not found");
+            }
+
+            return entity;
         }
 
-        public Task Update(Reservation guest)
+        public async Task<Reservation> GetById(int id)
         {
-            throw new NotImplementedException();
+            var entity = await _context.Reservations.FirstOrDefaultAsync(x => x.Id == id);
+
+            if (entity == null)
+            {
+                throw new NullReferenceException("Entitiy not found");
+            }
+
+            return entity;
+        }
+
+        public async Task Update(Reservation reservation)
+        {
+            if (reservation == null || reservation.Id <= 0)
+            {
+                throw new ArgumentNullException("Invalid argument passed");
+            }
+
+            var entity = await _context.Reservations.FirstOrDefaultAsync(x => x.Id == reservation.Id);
+
+            if (entity == null)
+            {
+                throw new NullReferenceException("Entity Not Found");
+            }
+
+            entity.CheckInDate = reservation.CheckInDate;
+            entity.CheckOutDate = reservation.CheckOutDate;
+
+            _context.Reservations.Update(entity);
+            await _context.SaveChangesAsync();
         }
     }
 }
