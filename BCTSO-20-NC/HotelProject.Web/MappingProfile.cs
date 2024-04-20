@@ -21,6 +21,25 @@ namespace HotelProject.Web
                 .ReverseMap();
 
 
+
+            CreateMap<GuestWithReservationForUpdatingDto, Guest>()
+                .ForMember(destination => destination.Id, options => options.MapFrom(srouce => srouce.GuestId))
+                .ReverseMap();
+
+            CreateMap<GuestWithReservationForUpdatingDto, Reservation>()
+                .ForMember(destination => destination.Id, options => options.MapFrom(srouce => srouce.ReservationId))
+                .ReverseMap();
+
+            CreateMap<GuestReservation, GuestWithReservationForUpdatingDto>()
+                .ForMember(destination => destination.FirstName, options => options.MapFrom(source => source.Guest.FirstName))
+                .ForMember(destination => destination.LastName, options => options.MapFrom(source => source.Guest.LastName))
+                .ForMember(destination => destination.PersonalNumber, options => options.MapFrom(source => source.Guest.PersonalNumber))
+                .ForMember(destination => destination.PhoneNumber, options => options.MapFrom(source => source.Guest.PhoneNumber))
+                .ForMember(destination => destination.CheckInDate, options => options.MapFrom(source => source.Reservation.CheckInDate))
+                .ForMember(destination => destination.CheckOutDate, options => options.MapFrom(source => source.Reservation.CheckOutDate))
+                .ReverseMap();
+
+
             CreateMap<GuestWithReservationForCreatingDto, Guest>().ReverseMap();
             CreateMap<GuestWithReservationForCreatingDto, Reservation>().ReverseMap();
             CreateMap<GuestWithReservationForCreatingDto, GuestReservation>().ReverseMap();

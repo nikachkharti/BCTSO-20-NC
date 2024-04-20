@@ -71,5 +71,23 @@ namespace HotelProject.Web.Controllers
             return RedirectToAction("Index");
         }
 
+
+        public async Task<IActionResult> Update(int id)
+        {
+            GuestReservation rawData = await _guestReservationRepository.GetById(id);
+            GuestWithReservationForUpdatingDto result = _mapper.Map<GuestWithReservationForUpdatingDto>(rawData);
+            return View(result);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UpdatePOST(GuestWithReservationForUpdatingDto model)
+        {
+            await _guestReservationRepository.Update(_mapper.Map<GuestReservation>(model));
+            await _guestRepository.Update(_mapper.Map<Guest>(model));
+            await _reservationRepository.Update(_mapper.Map<Reservation>(model));
+
+            return RedirectToAction("Index");
+        }
+
     }
 }
