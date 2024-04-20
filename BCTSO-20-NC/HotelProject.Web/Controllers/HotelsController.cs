@@ -1,17 +1,21 @@
-﻿using HotelProject.Models;
+﻿using HotelProject.Data;
+using HotelProject.Models;
 using HotelProject.Repository.Interfaces;
 using HotelProject.Repository.MicrosoftDataSQLClient;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace HotelProject.Web.Controllers
 {
     public class HotelsController : Controller
     {
         private readonly IHotelRepository _hotelRepository;
+        private readonly ApplicationDbContext _context;
 
-        public HotelsController(IHotelRepository hotelsController)
+        public HotelsController(IHotelRepository hotelsController, ApplicationDbContext context)
         {
             _hotelRepository = hotelsController;
+            _context = context;
         }
 
         public async Task<IActionResult> Index()

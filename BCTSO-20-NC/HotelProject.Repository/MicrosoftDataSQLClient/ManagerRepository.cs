@@ -3,11 +3,13 @@ using HotelProject.Models;
 using HotelProject.Repository.Interfaces;
 using Microsoft.Data.SqlClient;
 using System.Data;
+using System.Linq.Expressions;
 
 namespace HotelProject.Repository.MicrosoftDataSQLClient
 {
     public class ManagerRepository : IManagerRepository
     {
+        /* SQL CLIENT
         public async Task<List<Manager>> GetManagers()
         {
             List<Manager> result = new();
@@ -50,7 +52,6 @@ namespace HotelProject.Repository.MicrosoftDataSQLClient
 
             return result;
         }
-
         public async Task<Manager> GetSingleManager(int id)
         {
             Manager result = new();
@@ -90,7 +91,6 @@ namespace HotelProject.Repository.MicrosoftDataSQLClient
 
             return result;
         }
-
         public async Task AddManager(Manager manager)
         {
             string sqlExpression = "sp_addManager";
@@ -172,6 +172,36 @@ namespace HotelProject.Repository.MicrosoftDataSQLClient
                     await connection.CloseAsync();
                 }
             }
+        }
+         */
+        public Task AddAsync(Manager entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<List<Manager>> GetAllAsync(Expression<Func<Manager, bool>> filter, string includeProperties = null)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<List<Manager>> GetAllAsync(string includeProperties = null)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Manager> GetAsync(Expression<Func<Manager, bool>> filter, string includeProperties = null)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Remove(Manager entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Manager> Update(Manager entity)
+        {
+            throw new NotImplementedException();
         }
     }
 }

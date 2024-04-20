@@ -1,8 +1,10 @@
-﻿using HotelProject.Models;
+﻿using HotelProject.Data;
+using HotelProject.Models;
 using HotelProject.Repository.Interfaces;
 using HotelProject.Repository.MicrosoftDataSQLClient;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 
 namespace HotelProject.Web.Controllers
 {
@@ -10,10 +12,13 @@ namespace HotelProject.Web.Controllers
     {
         private readonly IRoomRepository _roomRepository;
         private readonly IHotelRepository _hotelRepository;
-        public RoomsController(IRoomRepository roomRepository, IHotelRepository hotelRepository)
+        private readonly ApplicationDbContext _context;
+
+        public RoomsController(IRoomRepository roomRepository, IHotelRepository hotelRepository, ApplicationDbContext context)
         {
             _roomRepository = roomRepository;
             _hotelRepository = hotelRepository;
+            _context = context;
         }
 
         public async Task<IActionResult> Index()

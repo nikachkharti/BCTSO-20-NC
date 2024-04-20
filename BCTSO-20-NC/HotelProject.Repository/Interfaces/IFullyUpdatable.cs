@@ -2,6 +2,6 @@
 {
     public interface IFullyUpdatable<T> where T : class
     {
-        Task Update(T entity);
+        Task<T> Update(T entity);
     }
 }

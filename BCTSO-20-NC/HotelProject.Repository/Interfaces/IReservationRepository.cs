@@ -2,13 +2,7 @@
 
 namespace HotelProject.Repository.Interfaces
 {
-    public interface IReservationRepository
+    public interface IReservationRepository : IRepositoryBase<Reservation>, IFullyUpdatable<Reservation>
     {
-        Task<List<Reservation>> GetAll();
-        Task<Reservation> GetById(int id);
-        Task<Reservation> GetByCheckInCheckOutDate(DateTime checkinDate, DateTime checkoutDate);
-        Task Add(Reservation reservation);
-        Task Update(Reservation reservation);
-        Task Delete(int id);
     }
 }

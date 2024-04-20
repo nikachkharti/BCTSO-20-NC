@@ -2,12 +2,7 @@
 
 namespace HotelProject.Repository.Interfaces
 {
-    public interface IManagerRepository
+    public interface IManagerRepository : IRepositoryBase<Manager>, IFullyUpdatable<Manager>
     {
-        Task<List<Manager>> GetManagers();
-        Task<Manager> GetSingleManager(int id);
-        Task AddManager(Manager manager);
-        Task UpdateManager(Manager manager);
-        Task DeleteManager(int id);
     }
 }

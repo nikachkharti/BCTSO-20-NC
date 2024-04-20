@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
+using HotelProject.Data;
 using HotelProject.Models;
 using HotelProject.Models.Dtos;
 using HotelProject.Repository.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace HotelProject.Web.Controllers
 {
@@ -12,13 +14,15 @@ namespace HotelProject.Web.Controllers
         private readonly IGuestReservationRepository _guestReservationRepository;
         private readonly IReservationRepository _reservationRepository;
         private readonly IMapper _mapper;
+        private readonly ApplicationDbContext _context;
 
-        public GuestsController(IGuestRepository guestRepository, IGuestReservationRepository guestReservationRepository, IReservationRepository reservation, IMapper mapper)
+        public GuestsController(IGuestRepository guestRepository, IGuestReservationRepository guestReservationRepository, IReservationRepository reservation, IMapper mapper, ApplicationDbContext context)
         {
             _guestRepository = guestRepository;
             _guestReservationRepository = guestReservationRepository;
             _reservationRepository = reservation;
             _mapper = mapper;
+            _context = context;
         }
 
         public async Task<IActionResult> Index()
