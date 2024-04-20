@@ -20,8 +20,8 @@ namespace HotelProject.Web.Controllers
 
         public async Task<IActionResult> Index()
         {
-            List<Hotel> hotels = await _hotelRepository.GetHotels();
-            return View(hotels);
+            var result = await _hotelRepository.GetAllAsync();
+            return View(result);
         }
 
         public IActionResult Create()
@@ -32,13 +32,14 @@ namespace HotelProject.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> CreatePOST(Hotel model)
         {
-            await _hotelRepository.AddHotel(model);
+            await _hotelRepository.AddAsync(model);
+            await _context.SaveChangesAsync();
             return RedirectToAction("Index");
         }
 
         public async Task<IActionResult> Delete(int id)
         {
-            var result = await _hotelRepository.GetSingleHotel(id);
+            var result = await _hotelRepository.GetAsync(x => x.Id == id);
             return View(result);
         }
 
@@ -46,14 +47,18 @@ namespace HotelProject.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> DeletePOST(int id)
         {
-            await _hotelRepository.DeleteHotel(id);
+            var result = await _hotelRepository.GetAsync(x => x.Id == id);
+
+            _hotelRepository.Remove(result);
+            await _context.SaveChangesAsync();
+
             return RedirectToAction("Index");
         }
 
 
         public async Task<IActionResult> Update(int id)
         {
-            var result = await _hotelRepository.GetSingleHotel(id);
+            var result = await _hotelRepository.GetAsync(x => x.Id == id);
             return View(result);
         }
 
@@ -61,7 +66,8 @@ namespace HotelProject.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> UpdatePOST(Hotel model)
         {
-            await _hotelRepository.UpdateHotel(model);
+            await _hotelRepository.Update(model);
+            await _context.SaveChangesAsync();
             return RedirectToAction("Index");
         }
 

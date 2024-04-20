@@ -23,13 +23,13 @@ namespace HotelProject.Web.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var result = await _roomRepository.GetRooms();
+            var result = await _roomRepository.GetAllAsync(includeProperties: "Hotel");
             return View(result);
         }
 
         public async Task<IActionResult> Create()
         {
-            var hotels = await _hotelRepository.GetHotels();
+            var hotels = await _hotelRepository.GetAllAsync();
             ViewBag.Hotels = new SelectList(hotels, "Id", "Name");
 
             return View();
@@ -39,14 +39,16 @@ namespace HotelProject.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(Room model)
         {
-            await _roomRepository.AddRoom(model);
+            await _roomRepository.AddAsync(model);
+            await _context.SaveChangesAsync();
+
             return RedirectToAction("Index");
         }
 
 
         public async Task<IActionResult> Delete(int id)
         {
-            var result = await _roomRepository.GetSingleRoom(id);
+            var result = await _roomRepository.GetAsync(filter: x => x.Id == id, includeProperties: "Hotel");
             return View(result);
         }
 
@@ -54,14 +56,18 @@ namespace HotelProject.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> DeletePOST(int id)
         {
-            await _roomRepository.DeleteRoom(id);
+            var entityToRemove = await _roomRepository.GetAsync(filter: x => x.Id == id);
+
+            _roomRepository.Remove(entityToRemove);
+            await _context.SaveChangesAsync();
+
             return RedirectToAction("Index");
         }
 
         public async Task<IActionResult> Update(int id)
         {
-            var result = await _roomRepository.GetSingleRoom(id);
-            var hotels = await _hotelRepository.GetHotels();
+            var result = await _roomRepository.GetAsync(x => x.Id == id, includeProperties: "Hotel");
+            var hotels = await _hotelRepository.GetAllAsync();
             ViewBag.Hotels = new SelectList(hotels, "Id", "Name");
 
             return View(result);
@@ -71,7 +77,8 @@ namespace HotelProject.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> UpdatePOST(Room model)
         {
-            await _roomRepository.UpdateRoom(model);
+            await _roomRepository.Update(model);
+            await _context.SaveChangesAsync();
             return RedirectToAction("Index");
         }
     }
