@@ -1,7 +1,11 @@
 using HotelProject.Data;
+using HotelProject.Models;
 using HotelProject.Repository;
 using HotelProject.Repository.Interfaces;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
+using System.Runtime;
 
 namespace HotelProject.Web
 {
@@ -14,6 +18,19 @@ namespace HotelProject.Web
             // Add services to the container.
 
             builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("SQLServerLocalConnection")));
+
+            builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+            {
+                options.Password.RequiredLength = 3;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireDigit = false;
+
+                options.User.RequireUniqueEmail = true;
+            })
+                .AddEntityFrameworkStores<ApplicationDbContext>();
+
             builder.Services.AddAutoMapper(typeof(MappingProfile));
 
             builder.Services.AddScoped<IHotelRepository, HotelRepositoryEF>();
@@ -39,6 +56,8 @@ namespace HotelProject.Web
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 

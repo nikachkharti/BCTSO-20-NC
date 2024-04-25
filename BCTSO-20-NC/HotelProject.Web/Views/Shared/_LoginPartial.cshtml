@@ -1,0 +1,26 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+<ul class="navbar-nav">
+
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <li class="nav-item">
+            <a class="nav-link">გამარჯობა @User.Identity.Name</a>
+        </li>
+        <li class="nav-item">
+            <form asp-controller="Account" asp-action="Logout">
+                <button class="nav-link btn btn-link text-info" type="submit">გამოსვლა</button>
+            </form>
+        </li>
+    }
+    else
+    {
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-controller="Account" asp-action="Login">ავტორიზაცია</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-controller="Account" asp-action="Register">რეგისტრაცია</a>
+        </li>
+    }
+</ul>

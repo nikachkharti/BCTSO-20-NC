@@ -1,10 +1,11 @@
 ﻿using HotelProject.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using System.Reflection.Metadata;
 
 namespace HotelProject.Data
 {
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext(DbContextOptions options) : base(options)
         {
@@ -12,6 +13,26 @@ namespace HotelProject.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
+            base.OnModelCreating(modelBuilder);
+
+            #region Roles
+
+            modelBuilder.Entity<IdentityRole>().HasData(
+                    new IdentityRole()
+                    {
+                        Name = "Administrator",
+                        NormalizedName = "ADMINISTRATOR"
+                    },
+                    new IdentityRole()
+                    {
+                        Name = "Customer",
+                        NormalizedName = "CUSTOMER"
+                    }
+                );
+
+            #endregion
+
 
             #region Hotels
 
@@ -294,5 +315,6 @@ namespace HotelProject.Data
         public DbSet<Guest> Guests { get; set; }
         public DbSet<Reservation> Reservations { get; set; }
         public DbSet<GuestReservation> GuestReservations { get; set; }
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
     }
 }

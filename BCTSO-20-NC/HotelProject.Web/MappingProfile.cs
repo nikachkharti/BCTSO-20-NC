@@ -44,6 +44,14 @@ namespace HotelProject.Web
             CreateMap<GuestWithReservationForCreatingDto, Reservation>().ReverseMap();
             CreateMap<GuestWithReservationForCreatingDto, GuestReservation>().ReverseMap();
 
+
+
+            CreateMap<UserRegistrationDto, ApplicationUser>()
+                .ForMember(destintaion => destintaion.UserName, options => options.MapFrom(source => source.Email))
+                .ReverseMap();
+
+            CreateMap<UserLoginDto, ApplicationUser>().ReverseMap();
+
         }
     }
 }
