@@ -2,6 +2,7 @@
 using HotelProject.Models;
 using HotelProject.Repository.Interfaces;
 using HotelProject.Repository.MicrosoftDataSQLClient;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -18,12 +19,14 @@ namespace HotelProject.Web.Controllers
             _context = context;
         }
 
+
         public async Task<IActionResult> Index()
         {
             var result = await _hotelRepository.GetAllAsync();
             return View(result);
         }
 
+        [Authorize(Roles = "Administrator")]
         public IActionResult Create()
         {
             return View();
@@ -69,6 +72,11 @@ namespace HotelProject.Web.Controllers
             await _hotelRepository.Update(model);
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");
+        }
+
+        public IActionResult AccessDenied()
+        {
+            return View();
         }
 
     }
