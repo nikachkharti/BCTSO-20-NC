@@ -10,4 +10,12 @@
 		<None Remove="HotelProject.API.http" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <PackageReference Include="AutoMapper" Version="13.0.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\HotelProject.Repository\HotelProject.Repository.csproj" />
+	</ItemGroup>
+
 </Project>
