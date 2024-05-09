@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Todo.Contracts;
+using Todo.Models;
 
 namespace Todo.API.Controllers
 {
@@ -20,6 +21,13 @@ namespace Todo.API.Controllers
             return Ok(result);
         }
 
-        //დაწერეთ კონტროლერი რომელიც დაამატებს ახალ Todo - s
+
+        [HttpPost]
+        public async Task<IActionResult> AddTodo([FromForm] TodoForAddingDto model)
+        {
+            await _todoService.AddTodoAsync(model);
+            return Ok(model);
+        }
+
     }
 }
