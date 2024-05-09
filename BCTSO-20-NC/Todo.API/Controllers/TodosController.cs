@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Todo.Contracts;
 using Todo.Models;
 
@@ -6,6 +7,7 @@ namespace Todo.API.Controllers
 {
     [Route("api/todos")]
     [ApiController]
+    [Authorize]
     public class TodosController : ControllerBase
     {
         private readonly ITodoService _todoService;

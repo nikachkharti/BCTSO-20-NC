@@ -8,6 +8,9 @@ namespace Todo.API
 
             // Add services to the container.
             builder.AddDatabaseContext();
+            builder.ConfigureJwtOptions();
+            builder.AddIdentity();
+            builder.AddAuthentication();
             builder.AddScopedServices();
             builder.AddControllers();
             builder.AddEndpointsApiExplorer();
@@ -22,12 +25,9 @@ namespace Todo.API
             }
 
             app.UseHttpsRedirection();
-
+            app.UseAuthentication();
             app.UseAuthorization();
-
-
             app.MapControllers();
-
             app.Run();
         }
     }
