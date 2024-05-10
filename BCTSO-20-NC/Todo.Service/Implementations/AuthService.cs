@@ -29,28 +29,30 @@ namespace Todo.Service.Implementations
         public async Task<LoginResponseDto> Login(LoginRequestDto loginRequestDto)
         {
             var user = await _context.Users.FirstOrDefaultAsync(x => x.UserName.ToLower() == loginRequestDto.UserName.ToLower());
+
             bool isValid = await _userManager.CheckPasswordAsync(user, loginRequestDto.Password);
 
             if (user == null || isValid == false)
             {
                 return new LoginResponseDto()
                 {
-                    Token = string.Empty,
-                    User = null
+                    User = null,
+                    Token = string.Empty
                 };
             }
 
+            //If user was found generate token
             var roles = await _userManager.GetRolesAsync(user);
             var token = _jwtTokenGenerator.GenerateToken(user, roles);
 
             UserDto userDto = new()
             {
-                Id = user.Id,
                 Email = user.Email,
+                Id = user.Id,
                 PhoneNumber = user.PhoneNumber
             };
 
-            LoginResponseDto result = new()
+            LoginResponseDto result = new LoginResponseDto()
             {
                 User = userDto,
                 Token = token
@@ -72,7 +74,7 @@ namespace Todo.Service.Implementations
 
             try
             {
-                IdentityResult result = await _userManager.CreateAsync(user);
+                IdentityResult result = await _userManager.CreateAsync(user, registrationRequestDto.Password);
 
                 if (result.Succeeded)
                 {
