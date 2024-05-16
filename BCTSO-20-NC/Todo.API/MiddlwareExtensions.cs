@@ -9,6 +9,7 @@ using Todo.Service.Implementations;
 using Microsoft.IdentityModel.Tokens;
 using Todo.Models.Identity;
 using Microsoft.OpenApi.Models;
+using Todo.Service.Jobs;
 
 namespace Todo.API
 {
@@ -123,6 +124,12 @@ namespace Todo.API
                     policy.AllowAnyOrigin();
                 });
             });
+        }
+
+
+        public static void AddBackgroundServices(this WebApplicationBuilder builder)
+        {
+            builder.Services.AddHostedService<HelloBackgroundService>();
         }
     }
 }
