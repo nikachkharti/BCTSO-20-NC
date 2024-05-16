@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using Todo.Entities;
+using Microsoft.AspNetCore.Identity;
 
 namespace Todo.Models
 {
@@ -29,5 +30,8 @@ namespace Todo.Models
 
         [Required]
         public Priority Priority { get; set; } = Priority.Medium;
+
+        [Required]
+        public string UserId { get; set; }
     }
 }

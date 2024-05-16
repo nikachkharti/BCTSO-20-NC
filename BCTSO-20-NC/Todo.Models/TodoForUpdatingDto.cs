@@ -34,5 +34,8 @@ namespace Todo.Models
 
         [Required]
         public Priority Priority { get; set; } = Priority.Medium;
+
+        [Required]
+        public string UserId { get; set; }
     }
 }
