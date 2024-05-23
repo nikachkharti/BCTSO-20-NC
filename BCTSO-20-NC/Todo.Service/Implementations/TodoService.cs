@@ -1,10 +1,14 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.JsonPatch;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System.Security.Claims;
+using Microsoft.AspNetCore.JsonPatch.Adapters;
 using Todo.Contracts;
 using Todo.Entities;
 using Todo.Models;
 using Todo.Service.Exceptions;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Todo.Service.Implementations
 {
@@ -90,10 +94,40 @@ namespace Todo.Service.Implementations
         }
 
 
-        public Task UpdateTodoAsync(TodoForUpdatingDto todoForUpdatingDto)
+
+
+        public async Task UpdateTodoAsync(TodoForUpdatingDto todoForUpdatingDto)
         {
-            throw new NotImplementedException();
+            if (todoForUpdatingDto == null)
+                throw new ArgumentNullException("Invalid argument passed");
+
+            await _todoRepository.UpdateTodoAsync(_mapper.Map<TodoEntity>(todoForUpdatingDto));
+            await _todoRepository.Save();
         }
+
+
+
+        public async Task UpdateTodoPartiallyAsync(int todoId, JsonPatchDocument<TodoForUpdatingDto> patchDocument, ModelStateDictionary modelState)
+        {
+            if (todoId <= 0)
+                throw new ArgumentException("Invalid argument passed");
+
+            TodoEntity rawTodo = await _todoRepository.GetSingleTodoAsync(x => x.Id == todoId);
+
+            if (rawTodo == null)
+                throw new TodoNotFoundException();
+
+            TodoForUpdatingDto todoToPatch = _mapper.Map<TodoForUpdatingDto>(rawTodo);
+            patchDocument.ApplyTo(todoToPatch, modelState);
+
+            if (!modelState.IsValid)
+                throw new InvalidDataException("Invalid paraemeters passed operation type, updateable property path ro value is incorrect");
+
+            _mapper.Map(todoToPatch, rawTodo);
+
+            await _todoRepository.Save();
+        }
+
 
 
         private string AuthenticatedUserId()

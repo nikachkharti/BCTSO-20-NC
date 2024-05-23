@@ -10,6 +10,8 @@ using Microsoft.IdentityModel.Tokens;
 using Todo.Models.Identity;
 using Microsoft.OpenApi.Models;
 using Todo.Service.Jobs;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Todo.API
 {
@@ -75,7 +77,11 @@ namespace Todo.API
 
         public static void AddControllers(this WebApplicationBuilder builder)
         {
-            builder.Services.AddControllers();
+            builder.Services.AddControllers(options =>
+            {
+                options.ReturnHttpNotAcceptable = true;
+                options.Filters.Add(new ProducesAttribute("application/json", "text/plain"));
+            }).AddNewtonsoftJson();
         }
 
         public static void AddEndpointsApiExplorer(this WebApplicationBuilder builder)

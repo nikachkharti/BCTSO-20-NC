@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Azure;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 using Todo.Contracts;
@@ -20,6 +22,34 @@ namespace Todo.API.Controllers
             _response = new();
         }
 
+
+        //[HttpPut]
+        //public async Task<IActionResult> UpdateTodo([FromBody] TodoForUpdatingDto model)
+        //{
+        //    await _todoService.UpdateTodoAsync(model);
+
+        //    _response.Result = model;
+        //    _response.IsSuccess = true;
+        //    _response.StatusCode = Convert.ToInt32(HttpStatusCode.OK);
+        //    _response.Message = "Request completed successfully";
+
+        //    return StatusCode(_response.StatusCode, _response);
+        //}
+
+
+
+        [HttpPatch("{todoId:int}")]
+        public async Task<IActionResult> UpdateTodo([FromRoute] int todoId, [FromBody] JsonPatchDocument<TodoForUpdatingDto> patchDocument)
+        {
+            await _todoService.UpdateTodoPartiallyAsync(todoId, patchDocument, ModelState);
+
+            _response.Result = patchDocument;
+            _response.IsSuccess = true;
+            _response.StatusCode = Convert.ToInt32(HttpStatusCode.OK);
+            _response.Message = "Request completed successfully";
+
+            return StatusCode(_response.StatusCode, _response);
+        }
 
         [HttpGet("{userId:guid}")]
         public async Task<IActionResult> AllTodosOfUser([FromRoute] string userId)

@@ -1,4 +1,6 @@
-﻿using Todo.Models;
+﻿using Microsoft.AspNetCore.JsonPatch;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Todo.Models;
 namespace Todo.Contracts
 {
     public interface ITodoService
@@ -8,5 +10,6 @@ namespace Todo.Contracts
         Task DeleteTodoAsync(int id);
         Task AddTodoAsync(TodoForAddingDto todoForAddingDto);
         Task UpdateTodoAsync(TodoForUpdatingDto todoForUpdatingDto);
+        Task UpdateTodoPartiallyAsync(int todoId, JsonPatchDocument<TodoForUpdatingDto> patchDocument, ModelStateDictionary modelState);
     }
 }

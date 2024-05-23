@@ -13,7 +13,7 @@ namespace Todo.API
             builder.AddAuthentication();
             builder.AddHttpContextAccessor();
             builder.AddScopedServices();
-            builder.AddBackgroundServices();
+            //builder.AddBackgroundServices();
             builder.AddControllers();
             builder.AddEndpointsApiExplorer();
             builder.AddSwagger();
