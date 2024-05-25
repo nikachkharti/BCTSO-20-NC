@@ -21,12 +21,8 @@ namespace Todo.API
 
             var app = builder.Build();
 
-            if (app.Environment.IsDevelopment())
-            {
-                app.UseSwagger();
-                app.UseSwaggerUI();
-            }
-
+            app.UseSwagger();
+            app.UseSwaggerUI();
             app.UseMiddleware<CustomExceptionHandlerMiddleware>();
             app.UseHttpsRedirection();
             app.UseCors(builder.Configuration.GetValue<string>("Cors:AllowOrigin"));
