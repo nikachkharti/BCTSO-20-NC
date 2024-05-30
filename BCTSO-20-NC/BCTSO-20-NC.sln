@@ -37,19 +37,25 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presistence", "Presistence"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{9ED81375-71CD-4275-903B-5A445F26FFEA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Todo.Entities", "Todo.Entities\Todo.Entities.csproj", "{19AF774B-56A4-4EA5-8EB4-41B3D3216BA6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Todo.Entities", "Todo.Entities\Todo.Entities.csproj", "{19AF774B-56A4-4EA5-8EB4-41B3D3216BA6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Todo.Data", "Todo.Data\Todo.Data.csproj", "{A278D9E2-01E4-4FE7-8402-936BE2E27D25}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Todo.Data", "Todo.Data\Todo.Data.csproj", "{A278D9E2-01E4-4FE7-8402-936BE2E27D25}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Todo.Repositories", "Todo.Repositories\Todo.Repositories.csproj", "{C332CDAA-CC7C-4857-9686-F294DB66130D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Todo.Repositories", "Todo.Repositories\Todo.Repositories.csproj", "{C332CDAA-CC7C-4857-9686-F294DB66130D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Todo.Contracts", "Todo.Contracts\Todo.Contracts.csproj", "{EC03AD5B-E1F9-4EC0-A822-19DE9B53F7B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Todo.Contracts", "Todo.Contracts\Todo.Contracts.csproj", "{EC03AD5B-E1F9-4EC0-A822-19DE9B53F7B0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Todo.Service", "Todo.Service\Todo.Service.csproj", "{C0E76FAA-50AD-407B-B1DB-3CB4E5BD14DF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Todo.Service", "Todo.Service\Todo.Service.csproj", "{C0E76FAA-50AD-407B-B1DB-3CB4E5BD14DF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Todo.Models", "Todo.Models\Todo.Models.csproj", "{0F465266-5D08-4B78-8112-34F6E8A1E459}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Todo.Models", "Todo.Models\Todo.Models.csproj", "{0F465266-5D08-4B78-8112-34F6E8A1E459}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Todo.API", "Todo.API\Todo.API.csproj", "{612E97A6-3F5F-4E8A-B7B4-BFC4834D98AD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Todo.API", "Todo.API\Todo.API.csproj", "{612E97A6-3F5F-4E8A-B7B4-BFC4834D98AD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DateTimeAPI", "DateTimeAPI", "{C1985F22-A5D0-422E-93FE-43A4F9F93C84}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frontend", "Frontend", "{16354CA8-0DA1-4560-8610-FED2FD0201B3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Todo.Web", "Todo.Web\Todo.Web.csproj", "{0C0C42CB-2B98-453F-A4C2-E0CE95DBFE77}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -125,6 +131,10 @@ Global
 		{612E97A6-3F5F-4E8A-B7B4-BFC4834D98AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{612E97A6-3F5F-4E8A-B7B4-BFC4834D98AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{612E97A6-3F5F-4E8A-B7B4-BFC4834D98AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C0C42CB-2B98-453F-A4C2-E0CE95DBFE77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C0C42CB-2B98-453F-A4C2-E0CE95DBFE77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C0C42CB-2B98-453F-A4C2-E0CE95DBFE77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C0C42CB-2B98-453F-A4C2-E0CE95DBFE77}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -147,6 +157,8 @@ Global
 		{C0E76FAA-50AD-407B-B1DB-3CB4E5BD14DF} = {BCE4A1D7-E0D6-4537-8637-F29AC727FB6B}
 		{0F465266-5D08-4B78-8112-34F6E8A1E459} = {BCE4A1D7-E0D6-4537-8637-F29AC727FB6B}
 		{612E97A6-3F5F-4E8A-B7B4-BFC4834D98AD} = {9ED81375-71CD-4275-903B-5A445F26FFEA}
+		{16354CA8-0DA1-4560-8610-FED2FD0201B3} = {576EFE06-BB95-4B2C-BF7C-788B6B9ACFF7}
+		{0C0C42CB-2B98-453F-A4C2-E0CE95DBFE77} = {16354CA8-0DA1-4560-8610-FED2FD0201B3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8379B2BF-610E-42E7-A398-C36FF0A5874E}
